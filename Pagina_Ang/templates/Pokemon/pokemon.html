@@ -16,18 +16,27 @@
                 <a href="{% url 'inicio' %}">Volver al Inicio</a>
             </div>
 
-            <div class="pokemon-grid">
+            <div class="pokemon-carousel" aria-label="Carrusel de Pokémon">
+                <!-- Cada tarjeta es un slide; JavaScript muestra solo una a la vez. -->
                 {% for p in pokemon %}
-                <article class="pokemon-item">
+                <article class="pokemon-item{% if forloop.first %} active{% endif %}" aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}">
                     <img src="{% static 'images/' %}{{ p.Imagen }}" alt="{{ p.Nombre }}">
                     <h3>{{ p.Nombre }}</h3>
                     <p>Tipo: {{ p.Tipo }}</p>
                 </article>
                 {% endfor %}
             </div>
+
+            <!-- Los botones cambian el slide actual sin recargar la página. -->
+            <div class="pokemon-carousel-controls">
+                <button type="button" class="pokemon-prev" aria-label="Pokémon anterior">❮</button>
+                <span class="pokemon-counter" aria-live="polite">1 / {{ pokemon|length }}</span>
+                <button type="button" class="pokemon-next" aria-label="Pokémon siguiente">❯</button>
+            </div>
         </section>
     </main>
 
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/pokemon-carousel.js' %}"></script>
 </body>
 </html>
