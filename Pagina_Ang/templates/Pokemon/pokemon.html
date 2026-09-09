@@ -5,32 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokemon en Django</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <style>body{padding-top:20px}</style>
 </head>
 <body>
-    <div class="container">
-        <div class="row mb-3">
-            <div class="col">
+    <main class="pokemon-page">
+        <section class="pokemon-section">
+            <div class="pokemon-heading">
                 <h1>Catálogo de Pokemones</h1>
                 <a href="{% url 'inicio' %}">Volver al Inicio</a>
             </div>
-        </div>
 
-        <div class="row">
-            {% for p in pokemon %}
-            <div class="col-12 col-sm-6 col-md-4 mb-3">
-                <div class="card h-100">
-                    <img src="{% static 'images/' %}{{ p.Imagen }}" class="card-img-top" alt="{{ p.Nombre }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ p.Nombre }}</h5>
-                        <p class="card-text">Tipo: {{ p.Tipo }}</p>
-                    </div>
-                </div>
+            <div class="pokemon-grid">
+                {% for p in pokemon %}
+                <article class="pokemon-item">
+                    <img src="{% static 'images/' %}{{ p.Imagen }}" alt="{{ p.Nombre }}">
+                    <h3>{{ p.Nombre }}</h3>
+                    <p>Tipo: {{ p.Tipo }}</p>
+                </article>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
-    </div>
+        </section>
+    </main>
 
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
 </body>

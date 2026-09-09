@@ -6,7 +6,10 @@ from Pokemon import models as datos
 
 
 def inicio(request):
-    return render(request,'Pokemon/inicio.html')
+    data = {
+        'pokemon': datos.pokemon,
+    }
+    return render(request, 'Pokemon/inicio.html', data)
 
 
 
