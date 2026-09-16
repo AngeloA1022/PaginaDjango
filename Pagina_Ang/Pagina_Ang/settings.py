@@ -132,3 +132,8 @@ STATICFILES_DIRS = [STATIC_DIR]
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+#Super Usuario
+#administrador
+#password: pokemon123
