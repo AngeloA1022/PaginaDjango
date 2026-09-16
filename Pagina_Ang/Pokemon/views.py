@@ -1,21 +1,21 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from Pokemon import models as datos
+from Pokemon.models import Pokemon
 
 # Create your views here.
 
 
 def inicio(request):
+    pokemon_list = Pokemon.objects.all()
     data = {
-        'pokemon': datos.pokemon,
+        'pokemon': pokemon_list,
     }
     return render(request, 'Pokemon/inicio.html', data)
 
 
-
-
 def pokemon(request):
+    pokemon_list = Pokemon.objects.all()
     data = {
-        'pokemon': datos.pokemon,
+        'pokemon': pokemon_list,
     }
-    return render(request,'Pokemon/pokemon.html',data)
+    return render(request, 'Pokemon/pokemon.html', data)
