@@ -29,3 +29,7 @@ necesito que a este url le crees un estilo el cual sea un fondo azul y las letra
 no funciono sigue sin salir el boton
 
 necesito que ahora el boton este al medio
+
+ahora la letras que estan en el pokemonadd no se ven necesito que utilice letras de color blancas
+
+necesito que me separes los botones de guardar y ir al inicio

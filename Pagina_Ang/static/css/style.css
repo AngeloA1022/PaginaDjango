@@ -1151,3 +1151,93 @@ button:hover {
 .btn-center .btn-add-pokemon {
 	display: inline-block;
 }
+
+/* Estilos para la página de Agregar Pokémon: texto blanco y placeholders visibles */
+.pokemon-form {
+	color: #ffffff;
+	text-align: center;
+	justify-content: center;
+	display: flex;
+	flex-direction: column;
+	max-width: 400px;
+}
+
+.pokemon-form label {
+	color: #ffffff;
+	font-weight: 600;
+}
+
+.pokemon-form .form-control,
+.pokemon-form input,
+.pokemon-form textarea,
+.pokemon-form select {
+	color: #ffffff;
+	background-color: rgba(0,0,0,0.25);
+	border: 1px solid rgba(255,255,255,0.15);
+}
+
+.pokemon-form input::placeholder,
+.pokemon-form textarea::placeholder {
+	color: rgba(255,255,255,0.8);
+}
+
+.pokemon-form .form-control:focus,
+.pokemon-form input:focus,
+.pokemon-form textarea:focus {
+	background-color: rgba(0,0,0,0.35);
+	color: #ffffff;
+	outline: none;
+	box-shadow: 0 0 0 0.2rem rgba(40,116,166,0.15);
+}
+
+.pokemon-form .btn {
+	display: inline-block;
+	background-color: var(--primary);
+	padding: 1rem 1rem;
+	font-weight: 300;
+	text-decoration: none;
+	color: #000000 !important;
+	border: none;
+	border-radius: 10px;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	max-width: 240px;
+}
+
+/* Separar botones en el formulario: izquierda/derecha y responsive */
+.form-actions {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
+	width: 100%;
+	max-width: 400px;
+	margin: 0 auto;
+}
+
+.form-actions .btn-start {
+	background: rgba(0,0,0,0.6);
+	color: #ffffff !important;
+	border: none;
+}
+
+.form-actions .btn-save {
+	background: #1f5f85;
+	color: #000000 !important;
+	border: none;
+}
+
+@media (max-width: 576px) {
+	.form-actions {
+		flex-direction: column-reverse;
+		gap: 0.5rem;
+	}
+
+	.form-actions .btn {
+		width: 100%;
+		max-width: none;
+	}
+}
+
+
