@@ -1,6 +1,8 @@
 Super User Ang1022
 Contraseña= Ang1022
 
+16/09/2026
+
 No me funciona la pagina, ayudame a arreglarlo
 
 Necesito que solo haya en urls que llame a todas las rutas que necesite
@@ -9,7 +11,7 @@ Ahora no me funciona arreglarlo
 
 Me sigue sin funcionar 
 
-
+23/09/2026
 
 Hazme estilos con esto necesito que las letras sean azul
 
