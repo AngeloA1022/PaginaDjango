@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Pokemon</title>
+    <link href="{% static 'css/boostrap.min.css' %}" rel="stylesheet">
+</head>
+
+
+
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col">
+                <h1 class="titulo-admin">Administrar Pokemon</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        {{form.non_field_errors}}
+                        <div class="col-3 mb-3">
+                                {{form.nombre.label_tag}}
+                                {{form.nombre}}
+                                {{form.nombre.errors}}
+                            </div>
+                            <div class="mb-3">
+                                {{form.tipo.label_tag}}
+                                {{form.tipo}}
+                                {{form.tipo.errors}}
+                                </div>
+                                <div class="mb-3">
+                                {{form.descripcion.label_tag}}
+                                {{form.descripcion}}
+                                {{form.descripcion.errors}}
+                                </div>
+                                <div class="mb-3">
+                                    {{form.imagen.label_tag}}
+                                    {{form.imagen}}
+                                    {{form.imagen.errors}}
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class "col">
+                                    <a class="btn btn-dark"
+                                        href="{% url 'inicioadmin' %}">Ir al Inicio</a>
+                            </div>
+                            <div class="col">
+                                <button type="submit"
+                                    class="btn btn-primary">Guardar</button>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <script src="{% static 'js/boostrap.bundle.min.js' %}"></script>
+</body>
+</html>

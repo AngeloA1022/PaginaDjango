@@ -6,6 +6,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.inicio, name='inicio'),
     path('pokemon/', views.pokemon, name='pokemon'),
-    path('inicioadmin/', views.inicioadmin, name='inicioadmin')
+    path('inicioadmin/', views.inicioadmin, name='inicioadmin'),
+    path('agregar_pokemon/', views.agregar_pokemon, name='agregar_pokemon'),
 
 ]
