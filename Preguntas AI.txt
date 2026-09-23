@@ -1,13 +1,13 @@
 Super User Ang1022
 Contraseña= Ang1022
 
+No me funciona la pagina, ayudame a arreglarlo
 
+Necesito que solo haya en urls que llame a todas las rutas que necesite
 
+Ahora no me funciona arreglarlo
 
-
-
-
-
+Me sigue sin funcionar 
 
 
 
