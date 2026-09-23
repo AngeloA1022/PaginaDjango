@@ -20,11 +20,12 @@
                     {% csrf_token %}
                     <div class="row">
                         {{form.non_field_errors}}
+                        
                         <div class="col-3 mb-3">
-                                {{form.nombre.label_tag}}
-                                {{form.nombre}}
-                                {{form.nombre.errors}}
-                            </div>
+                            {{form.nombre.label_tag}}
+                            {{form.nombre}}
+                            {{form.nombre.errors}}
+                        </div>
                             <div class="mb-3">
                                 {{form.tipo.label_tag}}
                                 {{form.tipo}}
@@ -36,16 +37,16 @@
                                 {{form.descripcion.errors}}
                                 </div>
                                 <div class="mb-3">
-                                    {{form.imagen.label_tag}}
-                                    {{form.imagen}}
-                                    {{form.imagen.errors}}
-                                </div>
+                                {{form.imagen.label_tag}}
+                                {{form.imagen}}
+                                {{form.imagen.errors}}
                             </div>
+                        </div>
 
-                            <div class="row">
-                                <div class "col">
-                                    <a class="btn btn-dark"
-                                        href="{% url 'inicioadmin' %}">Ir al Inicio</a>
+                        <div class="row">
+                            <div class="col">
+                                <a class="btn btn-dark"
+                                    href="{% url 'inicioadmin' %}">Ir al Inicio</a>
                             </div>
                             <div class="col">
                                 <button type="submit"
