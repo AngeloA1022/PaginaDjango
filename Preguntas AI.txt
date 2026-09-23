@@ -18,3 +18,5 @@ Hazme estilos con esto necesito que las letras sean azul
 pero solo es este titulo que no me afecte a los demas que ya tengo
 
 damelo como te lo pedi
+
+tengo problemas con las rutas de pokemon add necesito que me lo arregles
