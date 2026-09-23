@@ -27,7 +27,7 @@ def agregar_pokemon(request):
             return render(request, 'Pokemon/pokemon.html', {'mensaje': 'Pokémon agregado correctamente.'})
     else:
         form = PokemonForm()
-    return render(request, 'Pokemon/agregar_pokemon.html', {'form': form})   
+    return render(request, 'Pokemon/pokemonAdd.html', {'form': form})   
 
 
 def pokemon(request):

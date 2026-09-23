@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Pokemon</title>
-    <link href="{% static 'css/boostrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 </head>
 
 
@@ -22,31 +22,31 @@
                         {{form.non_field_errors}}
                         
                         <div class="col-3 mb-3">
-                            {{form.nombre.label_tag}}
-                            {{form.nombre}}
-                            {{form.nombre.errors}}
+                            {{form.Nombre.label_tag}}
+                            {{form.Nombre}}
+                            {{form.Nombre.errors}}
                         </div>
                             <div class="mb-3">
-                                {{form.tipo.label_tag}}
-                                {{form.tipo}}
-                                {{form.tipo.errors}}
+                                {{form.Tipo.label_tag}}
+                                {{form.Tipo}}
+                                {{form.Tipo.errors}}
                                 </div>
                                 <div class="mb-3">
-                                {{form.descripcion.label_tag}}
-                                {{form.descripcion}}
-                                {{form.descripcion.errors}}
+                                {{form.Descripcion.label_tag}}
+                                {{form.Descripcion}}
+                                {{form.Descripcion.errors}}
                                 </div>
                                 <div class="mb-3">
-                                {{form.imagen.label_tag}}
-                                {{form.imagen}}
-                                {{form.imagen.errors}}
+                                {{form.Imagen.label_tag}}
+                                {{form.Imagen}}
+                                {{form.Imagen.errors}}
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col">
                                 <a class="btn btn-dark"
-                                    href="{% url 'inicioadmin' %}">Ir al Inicio</a>
+                                    href="{% url 'inicio' %}">Ir al Inicio</a>
                             </div>
                             <div class="col">
                                 <button type="submit"
