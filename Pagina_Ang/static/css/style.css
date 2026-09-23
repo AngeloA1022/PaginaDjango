@@ -1119,3 +1119,35 @@ button:hover {
 .titulo-admin {
     color: #2874a6;
 }
+
+/* Botón Agregar Pokémon: fondo azul y texto negro */
+.btn-add-pokemon {
+	display: flex;
+	padding: 1rem 1rem;
+	font-weight: 300;
+	text-decoration: none;
+	background-color: var(--blue) !important;
+	color: #000000 !important;
+	border: none;
+	border-radius: 10px;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	max-width: 240px;
+}
+
+.btn-add-pokemon:hover,
+.btn-add-pokemon:focus {
+	background-color: #1f5f85 !important;
+	color: #000000 !important;
+}
+
+/* Contenedor para centrar botones */
+.btn-center {
+	text-align: center;
+	margin: 1rem 0;
+}
+
+.btn-center .btn-add-pokemon {
+	display: inline-block;
+}

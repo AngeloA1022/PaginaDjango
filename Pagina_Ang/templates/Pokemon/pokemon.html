@@ -25,10 +25,15 @@
                     <img src="{% static 'images/' %}{{ p.Imagen }}" alt="{{ p.Nombre }}">
                     <h3>{{ p.Nombre }}</h3>
                     <p>Tipo: {{ p.Tipo }}</p>
+                    <h3>{{ p.Descripcion }}</h3>
                 </article>
                 {% endfor %}
             </div>
 
+                
+                <div class="btn-center">
+                    <a href="{% url 'pokemonAdd' %}" class="btn btn-add-pokemon">Agregar Pokémon</a>
+                </div>
             <!-- Los botones cambian el slide actual sin recargar la página. -->
             <div class="pokemon-carousel-controls">
                 <button type="button" class="pokemon-prev" aria-label="Pokémon anterior">❮</button>

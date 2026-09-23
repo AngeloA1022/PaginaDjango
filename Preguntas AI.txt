@@ -20,3 +20,12 @@ pero solo es este titulo que no me afecte a los demas que ya tengo
 damelo como te lo pedi
 
 tengo problemas con las rutas de pokemon add necesito que me lo arregles
+
+me puedes dejar mas ordenado las variables que pide el pokemon add
+
+necesito que a este url le crees un estilo el cual sea un fondo azul y las letras negras
+<a href="{% url 'pokemonAdd' %}" class="btn btn-primary">Agregar Pokémon</a>
+
+no funciono sigue sin salir el boton
+
+necesito que ahora el boton este al medio

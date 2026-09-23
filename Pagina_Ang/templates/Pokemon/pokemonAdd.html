@@ -16,48 +16,48 @@
         <div class="row mt-5">
             <div class="col">
                 <h1 class="titulo-admin">Administrar Pokemon</h1>
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <div class="row">
-                        {{form.non_field_errors}}
-                        
-                        <div class="col-3 mb-3">
-                            {{form.Nombre.label_tag}}
-                            {{form.Nombre}}
-                            {{form.Nombre.errors}}
-                        </div>
-                            <div class="mb-3">
-                                {{form.Tipo.label_tag}}
-                                {{form.Tipo}}
-                                {{form.Tipo.errors}}
-                                </div>
-                                <div class="mb-3">
-                                {{form.Descripcion.label_tag}}
-                                {{form.Descripcion}}
-                                {{form.Descripcion.errors}}
-                                </div>
-                                <div class="mb-3">
-                                {{form.Imagen.label_tag}}
-                                {{form.Imagen}}
-                                {{form.Imagen.errors}}
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <a class="btn btn-dark"
-                                    href="{% url 'inicio' %}">Ir al Inicio</a>
-                            </div>
-                            <div class="col">
-                                <button type="submit"
-                                    class="btn btn-primary">Guardar</button>
-
-                                </div>
-                            </div>
-                        </form>
+                    
+                    <!-- Errores generales del formulario -->
+                    {{form.non_field_errors}}
+                    
+                    <!-- Campos del formulario -->
+                    <div class="mb-3">
+                        {{form.Nombre.label_tag}}
+                        {{form.Nombre}}
+                        {{form.Nombre.errors}}
                     </div>
-                </div>
+
+                    <div class="mb-3">
+                        {{form.Tipo.label_tag}}
+                        {{form.Tipo}}
+                        {{form.Tipo.errors}}
+                    </div>
+
+                    <div class="mb-3">
+                        {{form.Descripcion.label_tag}}
+                        {{form.Descripcion}}
+                        {{form.Descripcion.errors}}
+                    </div>
+
+                    <div class="mb-3">
+                        {{form.Imagen.label_tag}}
+                        {{form.Imagen}}
+                        {{form.Imagen.errors}}
+                    </div>
+
+                    <!-- Botones de acción -->
+                    <div class="row mt-4">
+                        <div class="col">
+                            <a class="btn btn-dark" href="{% url 'inicio' %}">Ir al Inicio</a>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <script src="{% static 'js/boostrap.bundle.min.js' %}"></script>
+        </div>
+    </div>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>
