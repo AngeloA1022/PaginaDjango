@@ -1110,3 +1110,12 @@ button:hover {
 .input-ok {
 	border: 2px solid var(--primary);
 }
+
+
+/* ===================== */
+/* Nuevos estilos */
+/* ===================== */
+
+.titulo-admin {
+    color: #2874a6;
+}
