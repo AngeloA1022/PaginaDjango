@@ -33,3 +33,13 @@ necesito que ahora el boton este al medio
 ahora la letras que estan en el pokemonadd no se ven necesito que utilice letras de color blancas
 
 necesito que me separes los botones de guardar y ir al inicio
+
+en la base de datos me esta guardan completa la ruta de las imagenes , necesito que solo guarde el nombre de la imagen no con la ruta completa
+
+si necesito que me lo arregles
+
+hazlo tu
+
+me sigue dando error no me toma bien
+
+necesito que guarde e nombre.png para que funcione

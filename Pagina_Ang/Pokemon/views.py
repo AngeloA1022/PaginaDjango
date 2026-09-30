@@ -1,3 +1,5 @@
+import os
+from django.conf import settings
 from django.shortcuts import render
 from django.http import HttpResponse
 from Pokemon.forms import PokemonForm
@@ -23,7 +25,22 @@ def agregar_pokemon(request):
     if request.method == 'POST':
         form = PokemonForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            pokemon = form.save(commit=False)
+
+            archivo = request.FILES.get('Imagen')
+            if archivo:
+                nombre_archivo = archivo.name
+                carpeta = os.path.join(settings.MEDIA_ROOT, 'images')
+                os.makedirs(carpeta, exist_ok=True)
+
+                ruta = os.path.join(carpeta, nombre_archivo)
+                with open(ruta, 'wb+') as destino:
+                    for chunk in archivo.chunks():
+                        destino.write(chunk)
+
+                pokemon.Imagen = nombre_archivo
+
+            pokemon.save()
             return render(request, 'Pokemon/pokemon.html', {'mensaje': 'Pokémon agregado correctamente.'})
     else:
         form = PokemonForm()
