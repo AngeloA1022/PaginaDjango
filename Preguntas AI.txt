@@ -43,3 +43,17 @@ hazlo tu
 me sigue dando error no me toma bien
 
 necesito que guarde e nombre.png para que funcione
+
+pero yo necesito que imagen tenga la ruta nombreimagen
+
+escuchame necesito que lo que hace nombreimagen que lo haga imagen, no necesitaba que crearas otra variable
+
+si arréglalo
+
+de verdad necesito que quede guarada haci en la base de datos independiente el nombre de la imagen blastoise.png
+
+si, necesito que lo arregles
+
+haz tu los cambios
+
+pero haz tu todos los cambios porque no entiendo
