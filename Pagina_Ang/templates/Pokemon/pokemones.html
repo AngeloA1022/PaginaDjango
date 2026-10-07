@@ -1,0 +1,45 @@
+{% extends 'Pokemon/base.html' %}
+
+{% block content %}
+    
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col-9">
+                    <div class="h2"> Listado de Pokemones</div>
+                </div>
+                <div class="col-3">
+                    <a class="btn btn-success btn-sm" href="{% url 'crearPokemon' %}">Agregar Pokemon</a>
+                </div>
+            </div>
+            <table class="table table-dark table-hover table-striped">
+               <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Tipo</th>
+                    <th>Descripcion</th>
+                    <th">Imagen</th>
+                    <th>Acciones</th>
+                </tr>
+               </thead>
+               <tbody>
+                {% for p in pokemon %}
+                <tr>
+                    <td>{{ p.id }}</td>
+                    <td>{{ p.Nombre }}</td>
+                    <td>{{ p.Tipo }}</td>
+                    <td>{{ p.Descripcion }}</td>
+                    <td><img src="{% static 'images/' %}{{ p.Imagen }}" alt="{{ p.Nombre }}" width="50"></td>
+                    <td>
+                        <a class="btn btn-warning btn-sm" href="#">Modificar</a>
+                        <a class="btn btn-danger btn-sm" href="#">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+               </tbody> 
+            </table>
+        </div>
+    </div>
+
+{}
