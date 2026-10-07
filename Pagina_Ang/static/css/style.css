@@ -975,36 +975,73 @@ button:hover {
 }
 
 .pokemon-list-wrapper {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 30px auto 0;
-    background: rgba(0, 0, 0, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
+    background: rgba(10, 15, 20, 0.82);
+    border: 2px solid rgba(14, 189, 128, 0.7);
+    border-radius: 18px;
     padding: 20px;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(2px);
 }
 
 .pokemon-list-table {
     margin-bottom: 0;
-    border-radius: 10px;
+    width: 100%;
+    border-collapse: collapse;
     overflow: hidden;
+    background: rgba(0, 0, 0, 0.45);
+    color: #ffffff;
+    border-radius: 12px;
+}
+
+.pokemon-list-table thead th {
+    background: linear-gradient(90deg, rgba(14, 189, 128, 0.95), rgba(40, 116, 166, 0.9));
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.9rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.15);
 }
 
 .pokemon-list-table th,
 .pokemon-list-table td {
     vertical-align: middle;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 14px 12px;
+}
+
+.pokemon-list-table tbody tr {
+    background: rgba(14, 17, 20, 0.8);
+    transition: background 0.2s ease;
+}
+
+.pokemon-list-table tbody tr:nth-child(even) {
+    background: rgba(9, 14, 18, 0.92);
+}
+
+.pokemon-list-table tbody tr:hover {
+    background: rgba(14, 189, 128, 0.12);
+}
+
+.pokemon-list-table td {
+    color: #edf8f4;
 }
 
 .pokemon-list-table img {
-    width: 56px;
+    width: 64px;
     height: auto;
-    border-radius: 8px;
+    border-radius: 12px;
     display: block;
+    margin: 0 auto;
+    border: 2px solid var(--blue);
+    box-shadow: 0 0 12px rgba(40, 116, 166, 0.4);
+    background: rgba(255,255,255,0.08);
 }
 
 .pokemon-name {
-    color: #fff;
-    font-weight: 600;
+    color: #72f0bf;
+    font-weight: 700;
 }
 
 .pokemon-actions {
@@ -1015,9 +1052,27 @@ button:hover {
     align-items: center;
 }
 
+.pokemon-actions .btn-warning {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: #ffffff;
+}
+
+.pokemon-actions .btn-danger {
+    background: #111111;
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
 @media (max-width: 768px) {
     .pokemon-list-wrapper {
         padding: 12px;
+    }
+
+    .pokemon-list-table th,
+    .pokemon-list-table td {
+        padding: 10px 8px;
+        font-size: 0.85rem;
     }
 
     .pokemon-actions {
