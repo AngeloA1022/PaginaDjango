@@ -22,7 +22,7 @@
                 <!-- Cada tarjeta es un slide; JavaScript muestra solo una a la vez. -->
                 {% for p in pokemon %}
                 <article class="pokemon-item{% if forloop.first %} active{% endif %}" aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}">
-                    <img src="{% static 'images/' %}{{ p.Imagen }}" alt="{{ p.Nombre }}">
+                    <img src="{% static 'images/' %}{{ p.Imagen|cut:'images/' }}" alt="{{ p.Nombre }}">
                     <h3>{{ p.Nombre }}</h3>
                     <p>Tipo: {{ p.Tipo }}</p>
                     <h3>{{ p.Descripcion }}</h3>
@@ -32,7 +32,7 @@
 
                 
                 <div class="btn-center">
-                    <a href="{% url 'crear_pokemon' %}" class="btn btn-add-pokemon">Agregar Pokémon</a>
+                    <a href="{% url 'crearPokemon' %}" class="btn btn-add-pokemon">Agregar Pokémon</a>
                 </div>
             <!-- Los botones cambian el slide actual sin recargar la página. -->
             <div class="pokemon-carousel-controls">

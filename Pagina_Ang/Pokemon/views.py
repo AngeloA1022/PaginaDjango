@@ -7,7 +7,31 @@ from Pokemon.models import Pokemon
 # Create your views here.
 
 
+def normalizar_imagenes():
+    for pokemon in Pokemon.objects.all():
+        if not pokemon.Imagen:
+            continue
+
+        valor = pokemon.Imagen.strip().replace('\\', '/')
+        nombre = os.path.basename(valor)
+
+        static_path = os.path.join(settings.BASE_DIR, 'static', 'images', nombre)
+        media_path = os.path.join(settings.MEDIA_ROOT, 'images', nombre)
+        media_root_path = os.path.join(settings.MEDIA_ROOT, nombre)
+
+        if os.path.exists(static_path):
+            pokemon.Imagen = nombre
+            pokemon.save(update_fields=['Imagen'])
+        elif os.path.exists(media_path):
+            pokemon.Imagen = f"images/{nombre}"
+            pokemon.save(update_fields=['Imagen'])
+        elif os.path.exists(media_root_path):
+            pokemon.Imagen = nombre
+            pokemon.save(update_fields=['Imagen'])
+
+
 def inicio(request):
+    normalizar_imagenes()
     pokemon_list = Pokemon.objects.all()
     data = {
         'pokemon': pokemon_list,
@@ -37,26 +61,23 @@ def crear_pokemon(request):
                     for chunk in archivo.chunks():
                         destino.write(chunk)
 
-                pokemon.Imagen = nombre_archivo
+                pokemon.Imagen = f"images/{nombre_archivo}"
 
             pokemon.save()
-            return redirect('pokemon')
+            return redirect('pokemones')
     else:
         form = PokemonForm()
     return render(request, 'Pokemon/pokemonAdd.html', {'form': form})   
 
 
 def pokemon(request):
-    pokemon_list = Pokemon.objects.all()
-    data = {
-        'pokemon': pokemon_list,
-    }
-    return render(request, 'Pokemon/pokemon.html', data)
+    return redirect('pokemones')
 
 def todos_pokemon(request):
+    normalizar_imagenes()
     pokemones = Pokemon.objects.all()
 
     data = {
         'pokemones': pokemones
     }
-    return render(request, 'Pokemon/pokemon.html', data)
+    return render(request, 'Pokemon/pokemones.html', data)
