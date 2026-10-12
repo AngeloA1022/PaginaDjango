@@ -79,33 +79,26 @@
                 </thead>
 
                 <tbody>
-                    {% for p in pokemones %}
+                    {% for pokemon in pokemones %}
                     <tr>
-                        <td>{{ p.id }}</td>
-                        <td class="pokemon-name">{{ p.Nombre }}</td>
-                        <td>{{ p.Tipo }}</td>
-                        <td>{{ p.Descripcion }}</td>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ pokemon.id }}</td>
+                        <td class="pokemon-name">{{ pokemon.Nombre }}</td>
+                        <td>{{ pokemon.Tipo }}</td>
+                        <td>{{ pokemon.Descripcion }}</td>
 
                         <td>
-                            {% if p.Imagen|slice:":7" == "images/" %}
-                            <img src="{% get_media_prefix %}{{ p.Imagen }}" alt="{{ p.Nombre }}">
+                            {% if pokemon.Imagen|slice:":7" == "images/" %}
+                            <img src="{% get_media_prefix %}{{ pokemon.Imagen }}" alt="{{ pokemon.Nombre }}">
                             {% else %}
-                            <img src="{% static 'images/' %}{{ p.Imagen|cut:'images/' }}" alt="{{ p.Nombre }}">
+                            <img src="{% static 'images/' %}{{ pokemon.Imagen|cut:'images/' }}" alt="{{ pokemon.Nombre }}">
                             {% endif %}
                         </td>
 
-                        <td class="pokemon-actions">
-                            <a class="btn btn-warning btn-sm"
-                                href="{% url 'modificarPokemon' p.pk %}">
-                                Modificar
-                            </a>
+                        <td>
+                            <a class="btn btn-warning btn-sm" href="#"> Modificar </a>
 
-                            <form method="post" action="{% url 'eliminarPokemon' p.pk %}">
-                                {% csrf_token %}
-                                <button class="btn btn-danger btn-sm" type="submit">
-                                    Eliminar
-                                </button>
-                            </form>
+                            <a class="btn btn-danger btn-sm" href="#">Eliminar</a>
                         </td>
                     </tr>
 

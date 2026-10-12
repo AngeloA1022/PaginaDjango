@@ -57,3 +57,27 @@ si, necesito que lo arregles
 haz tu los cambios
 
 pero haz tu todos los cambios porque no entiendo
+
+cambios 07/10
+
+necesito ayuda no me corre la pagina para agregar pokemones
+
+hazlo con los estilos que ya tengo
+
+ahora no me funciona la pagina
+
+arreglame todo para que no hayan errores
+
+las imagenes no me aperecen necesito que las arregles
+
+necesito que se vean las imagenes
+
+necesito que la tablas utilice formato similar a los colores que utiliza toda la pagina verde,negro y azul
+
+cambios 12/10
+
+necesito que me arregles las rutas que aparecezcan correctamente, no me funcion bien las rutas
+
+porque no me funciona pokemonAdd
+
+

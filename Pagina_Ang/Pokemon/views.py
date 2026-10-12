@@ -1,5 +1,6 @@
 import os
 from django.conf import settings
+from django.core.files.storage import default_storage
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
 from Pokemon.forms import PokemonForm
@@ -50,19 +51,12 @@ def crear_pokemon(request):
         form = PokemonForm(request.POST, request.FILES)
         if form.is_valid():
             pokemon = form.save(commit=False)
-
             archivo = request.FILES.get('Imagen')
             if archivo:
-                nombre_archivo = archivo.name
-                carpeta = os.path.join(settings.MEDIA_ROOT, 'images')
-                os.makedirs(carpeta, exist_ok=True)
-
-                ruta = os.path.join(carpeta, nombre_archivo)
-                with open(ruta, 'wb+') as destino:
-                    for chunk in archivo.chunks():
-                        destino.write(chunk)
-
-                pokemon.Imagen = f"images/{nombre_archivo}"
+                pokemon.Imagen = default_storage.save(
+                    f'images/{archivo.name}',
+                    archivo,
+                )
 
             pokemon.save()
             return redirect('pokemones')
