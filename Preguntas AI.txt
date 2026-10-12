@@ -80,4 +80,4 @@ necesito que me arregles las rutas que aparecezcan correctamente, no me funcion 
 
 porque no me funciona pokemonAdd
 
-
+necesito que utilices los estilo que ya existen de la barra de navegacion para que se vea con los estilo ya existentes

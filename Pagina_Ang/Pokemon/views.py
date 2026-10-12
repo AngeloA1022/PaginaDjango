@@ -69,41 +69,33 @@ def crear_pokemon(request):
     })
 
 
-def modificar_pokemon(request, pk):
-    pokemon = get_object_or_404(Pokemon, pk=pk)
+#Cargar pokemones para modificar
+def cargar_editar_pokemon(request,pokemon_id):
+    pokemon = get_object_or_404(Pokemon, id=pokemon_id)
+    form = PokemonForm(instance=pokemon)
+
+    return render(request, 'Pokemon/pokemonEdit.html', {'form': form, 'pokemon': pokemon})
+
+def editar_pokemon(request, pokemon_id):
+    pokemon = get_object_or_404(Pokemon, id=pokemon_id)
+
     if request.method == 'POST':
         form = PokemonForm(request.POST, request.FILES, instance=pokemon)
         if form.is_valid():
-            pokemon = form.save(commit=False)
+            form.save(commit=False)
             archivo = request.FILES.get('Imagen')
             if archivo:
-                nombre_archivo = archivo.name
-                carpeta = os.path.join(settings.MEDIA_ROOT, 'images')
-                os.makedirs(carpeta, exist_ok=True)
-
-                ruta = os.path.join(carpeta, nombre_archivo)
-                with open(ruta, 'wb+') as destino:
-                    for chunk in archivo.chunks():
-                        destino.write(chunk)
-
-                pokemon.Imagen = f"images/{nombre_archivo}"
-
+                pokemon.Imagen = default_storage.save(
+                    f'images/{archivo.name}',
+                    archivo,
+                )
             pokemon.save()
             return redirect('pokemones')
+    
     else:
         form = PokemonForm(instance=pokemon)
-    return render(request, 'Pokemon/pokemonAdd.html', {
-        'form': form,
-        'accion': f'Modificar {pokemon.Nombre}',
-        'boton': 'Guardar cambios',
-    })
 
-
-@require_POST
-def eliminar_pokemon(request, pk):
-    pokemon = get_object_or_404(Pokemon, pk=pk)
-    pokemon.delete()
-    return redirect('pokemones')
+    return render(request, 'Pokemon/pokemon.html', {'form': form})
 
 
 def pokemon(request):

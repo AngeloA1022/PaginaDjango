@@ -11,8 +11,8 @@ urlpatterns = [
     path('inicioadmin/', views.inicioadmin, name='inicioadmin'),
     path('pokemonAdd/', views.crear_pokemon, name='crearPokemon'),
     path('pokemones/', views.todos_pokemon, name='pokemones'),
-    path('pokemon/<int:pk>/editar/', views.modificar_pokemon, name='modificarPokemon'),
-    path('pokemon/<int:pk>/eliminar/', views.eliminar_pokemon, name='eliminarPokemon'),
+    path('pokemonEdit/<int:pokemon_id>/', views.cargar_editar_pokemon, name='editarPokemon'),
+    path('pokemonEditado/<int:pokemon_id>/', views.editar_pokemon, name='PokemonEditado'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
