@@ -9,7 +9,10 @@ class PokemonForm(forms.ModelForm):
     Tipo = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control','placeholder': 'Ej: Eléctrico'}),
     required=False)
     Descripcion = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control','placeholder': 'Ej: Un Pokémon de tipo eléctrico muy popular.'}))
-    Imagen = forms.ImageField(widget=forms.ClearableFileInput(attrs={'class': 'form-control-file'}))
+    Imagen = forms.ImageField(
+        widget=forms.ClearableFileInput(attrs={'class': 'form-control-file'}),
+        required=False,
+    )
 
 
 
@@ -35,4 +38,3 @@ class PokemonForm(forms.ModelForm):
             raise forms.ValidationError('La descripción debe contener al menos una palabra y no puede estar vacía.')
 
         return Descripcion
-

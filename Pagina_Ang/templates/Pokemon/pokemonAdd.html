@@ -17,7 +17,7 @@
     <div class="container pokemon-form">
         <div class="row mt-5">
             <div class="col">
-                <h1 class="titulo-admin">Administrar Pokemon</h1>
+                <h1 class="titulo-admin">{{ accion|default:"Administrar Pokémon" }}</h1>
                 <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     
@@ -55,10 +55,12 @@
                     <div class="row mt-4">
                         <div class="col">
 
-                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <button type="submit" class="btn btn-primary">
+                                {{ boton|default:"Guardar" }}
+                            </button>
 
                             <hr>
-                            <a class="btn btn-dark" href="{% url 'inicio' %}">Ir al Inicio</a>
+                            <a class="btn btn-dark" href="{% url 'pokemones' %}">Volver a Pokemones</a>
                         </div>
                     </div>
                 </form>

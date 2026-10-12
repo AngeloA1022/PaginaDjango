@@ -1,49 +1,130 @@
+{% extends 'Pokemon/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokemones Django</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="icon" href="{% static 'images/icono.png' %}" type="image/png">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 
-</head>
-<body>
-    <main class="pokemon-page">
-        <section class="pokemon-section">
-            <div class="pokemon-heading">
-                <h1>Catálogo de Pokemones</h1>
-                <a href="{% url 'inicio' %}">Volver al Inicio</a>
-            </div>
+{% block content %}
 
-            <div class="pokemon-carousel" aria-label="Carrusel de Pokémon">
-                <!-- Cada tarjeta es un slide; JavaScript muestra solo una a la vez. -->
-                {% for p in pokemon %}
-                <article class="pokemon-item{% if forloop.first %} active{% endif %}" aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}">
-                    <img src="{% static 'images/' %}{{ p.Imagen|cut:'images/' }}" alt="{{ p.Nombre }}">
-                    <h3>{{ p.Nombre }}</h3>
-                    <p>Tipo: {{ p.Tipo }}</p>
-                    <h3>{{ p.Descripcion }}</h3>
-                </article>
-                {% endfor %}
-            </div>
+<main class="pokemon-page">
+    <section class="pokemon-section mx-auto">
 
-                
-                <div class="btn-center">
-                    <a href="{% url 'crearPokemon' %}" class="btn btn-add-pokemon">Agregar Pokémon</a>
-                </div>
-            <!-- Los botones cambian el slide actual sin recargar la página. -->
-            <div class="pokemon-carousel-controls">
-                <button type="button" class="pokemon-prev" aria-label="Pokémon anterior">❮</button>
-                <span class="pokemon-counter" aria-live="polite">1 / {{ pokemon|length }}</span>
-                <button type="button" class="pokemon-next" aria-label="Pokémon siguiente">❯</button>
-            </div>
-        </section>
-    </main>
+        <!-- Encabezado -->
+        <div class="pokemon-heading">
+            <h1>Catálogo de Pokemones</h1>
+            <a href="{% url 'inicio' %}">Volver al Inicio</a>
+        </div>
 
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/pokemon-carousel.js' %}"></script>
-</body>
-</html>
+        <!-- Carrusel de Pokémon -->
+        <div class="pokemon-carousel" aria-label="Carrusel de Pokémon">
+
+            {% for p in pokemones %}
+            <article class="pokemon-item{% if forloop.first %} active{% endif %}"
+                aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}">
+
+                {% if p.Imagen|slice:":7" == "images/" %}
+                <img src="{% get_media_prefix %}{{ p.Imagen }}" alt="{{ p.Nombre }}">
+                {% else %}
+                <img src="{% static 'images/' %}{{ p.Imagen|cut:'images/' }}" alt="{{ p.Nombre }}">
+                {% endif %}
+
+                <h3>{{ p.Nombre }}</h3>
+                <p>Tipo: {{ p.Tipo }}</p>
+                <p>{{ p.Descripcion }}</p>
+
+            </article>
+            {% empty %}
+            <p class="text-center">No hay Pokémon registrados.</p>
+            {% endfor %}
+
+        </div>
+
+        <!-- Controles del carrusel -->
+        {% if pokemones %}
+        <div class="pokemon-carousel-controls">
+            <button type="button" class="pokemon-prev"
+                aria-label="Pokémon anterior">❮</button>
+
+            <span class="pokemon-counter" aria-live="polite">
+                1 / {{ pokemones|length }}
+            </span>
+
+            <button type="button" class="pokemon-next"
+                aria-label="Pokémon siguiente">❯</button>
+        </div>
+        {% endif %}
+
+        <!-- Botón para agregar -->
+        <div class="btn-center">
+            <a href="{% url 'crearPokemon' %}"
+                class="btn btn-add-pokemon">
+                Agregar Pokémon
+            </a>
+        </div>
+
+        <!-- Listado de Pokémon -->
+        <div class="pokemon-heading">
+            <h2>Listado de Pokemones</h2>
+        </div>
+
+        <div class="pokemon-list-wrapper">
+            <table class="table table-dark table-hover table-striped pokemon-list-table">
+
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Tipo</th>
+                        <th>Descripción</th>
+                        <th>Imagen</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for p in pokemones %}
+                    <tr>
+                        <td>{{ p.id }}</td>
+                        <td class="pokemon-name">{{ p.Nombre }}</td>
+                        <td>{{ p.Tipo }}</td>
+                        <td>{{ p.Descripcion }}</td>
+
+                        <td>
+                            {% if p.Imagen|slice:":7" == "images/" %}
+                            <img src="{% get_media_prefix %}{{ p.Imagen }}" alt="{{ p.Nombre }}">
+                            {% else %}
+                            <img src="{% static 'images/' %}{{ p.Imagen|cut:'images/' }}" alt="{{ p.Nombre }}">
+                            {% endif %}
+                        </td>
+
+                        <td class="pokemon-actions">
+                            <a class="btn btn-warning btn-sm"
+                                href="{% url 'modificarPokemon' p.pk %}">
+                                Modificar
+                            </a>
+
+                            <form method="post" action="{% url 'eliminarPokemon' p.pk %}">
+                                {% csrf_token %}
+                                <button class="btn btn-danger btn-sm" type="submit">
+                                    Eliminar
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+
+                    {% empty %}
+                    <tr>
+                        <td colspan="6" class="text-center">
+                            No hay Pokémon registrados.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+
+    </section>
+</main>
+
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/pokemon-carousel.js' %}"></script>
+
+{% endblock %}
