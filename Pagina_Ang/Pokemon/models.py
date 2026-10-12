@@ -14,3 +14,12 @@ class Pokemon(models.Model):
         db_table = 'pokemon'
         verbose_name = 'Pokemon'
         verbose_name_plural = 'Pokemons'
+
+def generarNombre(instance, filename):
+    extension = os.path.splitext(filename)[1][1:]
+    ruta = 'pokemones'
+    fecha = timezone.now().strftime('%Y%m%d%H%M%S')
+    nombre = "{}{}".format(fecha, extension)
+    return os.path.join(ruta, nombre)
+
+foto = models.ImageField(upload_to=generarNombre, null=True, default='pokemones/pokemon.png')
