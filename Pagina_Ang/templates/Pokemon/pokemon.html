@@ -3,6 +3,8 @@
 
 {% block content %}
 
+    <link rel="icon" href="{% static 'images/icono.png' %}" type="image/png">
+
 <main class="pokemon-page">
     <section class="pokemon-section mx-auto">
 
@@ -82,10 +84,9 @@
                     {% for pokemon in pokemones %}
                     <tr>
                         <td>{{ forloop.counter }}</td>
-                        <td>{{ pokemon.id }}</td>
                         <td class="pokemon-name">{{ pokemon.Nombre }}</td>
                         <td>{{ pokemon.Tipo }}</td>
-                        <td>{{ pokemon.Descripcion }}</td>
+                        <td class="pokemon-description">{{ pokemon.Descripcion }}</td>
 
                         <td>
                             {% if pokemon.Imagen|slice:":7" == "images/" %}
@@ -95,10 +96,9 @@
                             {% endif %}
                         </td>
 
-                        <td>
-                            <a class="btn btn-warning btn-sm" href="{% url 'editarPokemon' pokemon.id %}"> Modificar </a>
-
-                            <a class="btn btn-danger btn-sm" href="{% url 'eliminarPokemon' pokemon.id %}">Eliminar</a>
+                        <td class="pokemon-actions">
+                            <a class="pokemon-action-link" href="{% url 'editarPokemon' pokemon.id %}">Modificar</a>
+                            <a class="pokemon-action-link pokemon-action-link--danger" href="{% url 'eliminarPokemon' pokemon.id %}">Eliminar</a>
                         </td>
                     </tr>
 
