@@ -1,6 +1,52 @@
 {% extends 'Pokemon/base.html' %}
 
+{% load static %}
 {% block content %}
     
 
-<div
+    <div class="container pokemon-form">
+        <div class="row mt-5">
+            <div class="col">
+            <h2> Modificar Pokémon</h2>
+            <form method="POST" action="{%url 'pokemonEditado' pokemon.id %}">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+
+                <div class="mb-3">
+                    {{ form.Nombre.label_tag }}
+                    {{ form.Nombre }}
+                    <div class="text-danger">{{ form.Nombre.errors }}</div>
+                </div>
+
+                <div class="mb-3">
+                    {{ form.Tipo.label_tag }}
+                    {{ form.Tipo }}
+                    <div class="text-danger">{{ form.Tipo.errors }}</div>
+                </div>
+
+                <div class="mb-3">
+                    {{ form.Descripcion.label_tag }}
+                    {{ form.Descripcion }}
+                    <div class="text-danger">{{ form.Descripcion.errors }}</div>
+                </div>
+
+                <div class="mb-3">
+                    {{ form.Imagen.label_tag }}
+                    {{ form.Imagen }}
+                    <div class="text-danger">{{ form.Imagen.errors }}</div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col">
+                        <a class="btn btn-dark" href="{% url 'pokemones' %}">Listado de Pokemones</a>
+                    </div>
+                    <div class="col">
+                        <button type="submit"
+                            class="btn btn-warning">Modificar Pokémon</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

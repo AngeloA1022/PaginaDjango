@@ -96,9 +96,9 @@
                         </td>
 
                         <td>
-                            <a class="btn btn-warning btn-sm" href="#"> Modificar </a>
+                            <a class="btn btn-warning btn-sm" href="{% url 'editarPokemon' pokemon.id %}"> Modificar </a>
 
-                            <a class="btn btn-danger btn-sm" href="#">Eliminar</a>
+                            <a class="btn btn-danger btn-sm" href="{% url 'eliminarPokemon' pokemon.id %}">Eliminar</a>
                         </td>
                     </tr>
 

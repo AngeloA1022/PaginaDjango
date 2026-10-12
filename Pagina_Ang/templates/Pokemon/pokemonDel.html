@@ -1,0 +1,26 @@
+{% extends 'Pokemon/base.html' %}
+
+{% load static %}
+{% block content %}
+
+<div class="container mt-5 pokemon-delete-confirmation">
+    <h2 class="text-white">Confirmar Eliminación de Pokémon</h2>
+    <div class="pokemon-delete-message">
+        ¿Estás seguro de que deseas eliminar el Pokémon 
+        {{ pokemon.Nombre }} {{ pokemon.Tipo }}?
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class ="row">
+            <div class="col">
+                <a class="btn btn-dark" href="{% url 'pokemones' %}">Cancelar</a>
+            </div>
+            <div class="col">
+                <button class="btn btn-danger" type="submit">Confirmar Eliminación</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

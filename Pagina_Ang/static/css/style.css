@@ -1268,6 +1268,22 @@ button:hover {
 	max-width: 400px;
 }
 
+.pokemon-delete-confirmation,
+.pokemon-delete-confirmation h2 {
+	color: #ffffff !important;
+}
+
+.pokemon-delete-message,
+body .pokemon-delete-message * {
+	color: #ffffff !important;
+	background-color: #202020 !important;
+	border: 2px solid #ffffff !important;
+	border-radius: 8px;
+	padding: 1rem;
+	font-size: 1.25rem;
+	font-weight: 700;
+}
+
 .pokemon-form label {
 	color: #ffffff;
 	font-weight: 600;

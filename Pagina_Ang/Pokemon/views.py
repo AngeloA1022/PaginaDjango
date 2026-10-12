@@ -95,7 +95,15 @@ def editar_pokemon(request, pokemon_id):
     else:
         form = PokemonForm(instance=pokemon)
 
-    return render(request, 'Pokemon/pokemon.html', {'form': form})
+    return render(request, 'Pokemon/pokemonEdit.html', {'form': form, 'pokemon': pokemon})
+
+
+def eliminar_pokemon(request, pokemon_id):
+    pokemon = get_object_or_404(Pokemon, id=pokemon_id)
+    if request.method == 'POST':
+        pokemon.delete()
+        return redirect('pokemones')
+    return render(request, 'Pokemon/pokemonDel.html', {'pokemon': pokemon})
 
 
 def pokemon(request):
