@@ -1,6 +1,9 @@
 Super User Ang1022
 Contraseña= Ang1022
 
+Super User Administrador
+Contraseña= Ang1022
+
 16/09/2026
 
 No me funciona la pagina, ayudame a arreglarlo
@@ -100,4 +103,10 @@ a todo las paginas agregale esto
 
     <link rel="icon" href="{% static 'images/icono.png' %}" type="image/png">
 
+me falta esto me puede ayudar
 
+Solo usuarios autorizados tienen acceso y pueden modificar los datos.
+
+si necesito aplicar eso
+
+Si quieres, te lo dejo aplicado directamente en tu proyecto

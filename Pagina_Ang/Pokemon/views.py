@@ -1,5 +1,6 @@
 import os
 from django.conf import settings
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.files.storage import default_storage
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
@@ -7,6 +8,10 @@ from Pokemon.forms import PokemonForm
 from Pokemon.models import Pokemon
 
 # Create your views here.
+
+
+def es_admin(user):
+    return user.is_authenticated and user.is_staff
 
 
 def normalizar_imagenes():
@@ -41,11 +46,15 @@ def inicio(request):
     return render(request, 'Pokemon/inicio.html', data)
 
 
+@login_required(login_url='admin:login')
+@user_passes_test(es_admin, login_url='admin:login')
 def inicioadmin(request):
     return render(request, 'Pokemon/inicioadmin.html') 
 
 #------ Pokemones ------
 #
+@login_required(login_url='admin:login')
+@user_passes_test(es_admin, login_url='admin:login')
 def crear_pokemon(request):
     if request.method == 'POST':
         form = PokemonForm(request.POST, request.FILES)
@@ -70,12 +79,16 @@ def crear_pokemon(request):
 
 
 #Cargar pokemones para modificar
+@login_required(login_url='admin:login')
+@user_passes_test(es_admin, login_url='admin:login')
 def cargar_editar_pokemon(request,pokemon_id):
     pokemon = get_object_or_404(Pokemon, id=pokemon_id)
     form = PokemonForm(instance=pokemon)
 
     return render(request, 'Pokemon/pokemonEdit.html', {'form': form, 'pokemon': pokemon})
 
+@login_required(login_url='admin:login')
+@user_passes_test(es_admin, login_url='admin:login')
 def editar_pokemon(request, pokemon_id):
     pokemon = get_object_or_404(Pokemon, id=pokemon_id)
 
@@ -98,6 +111,8 @@ def editar_pokemon(request, pokemon_id):
     return render(request, 'Pokemon/pokemonEdit.html', {'form': form, 'pokemon': pokemon})
 
 
+@login_required(login_url='admin:login')
+@user_passes_test(es_admin, login_url='admin:login')
 def eliminar_pokemon(request, pokemon_id):
     pokemon = get_object_or_404(Pokemon, id=pokemon_id)
     if request.method == 'POST':
