@@ -20,15 +20,26 @@
             <li><a href="#">Mapas</a></li>
             <li><a href="#">Objetos</a></li>
             <li><a href="#">Contacto</a></li>
-            <li class="dropdown">
-                <a class="dropdown-toggle" href="#" role="button"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    Pokemones
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{% url 'crearPokemon' %}">Agregar Pokémon</a></li>
-                </ul>
-            </li>
+            {% if user.is_authenticated %}
+                <li class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Pokemones
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'crearPokemon' %}">Agregar Pokémon</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <form method="post" action="{% url 'logout' %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-link nav-link" style="padding:0; color:#fff;">Cerrar sesión</button>
+                    </form>
+                </li>
+            {% else %}
+                <li><a href="{% url 'registro' %}">Registro</a></li>
+                <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
+            {% endif %}
         </ul>
     </nav>
 

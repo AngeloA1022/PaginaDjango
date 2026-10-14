@@ -110,3 +110,9 @@ Solo usuarios autorizados tienen acceso y pueden modificar los datos.
 si necesito aplicar eso
 
 Si quieres, te lo dejo aplicado directamente en tu proyecto
+
+necesito que otro usuarios puedan hacer lo de crear,modificar y eliminar, que no solo el super usuarios lo pueda hacer
+
+haz los cambios en todo para sean real y funcional
+
+no puede registrar ningun usuarios y ademas me da error al momento de cerrar sesion

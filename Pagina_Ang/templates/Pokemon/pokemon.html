@@ -54,12 +54,14 @@
         {% endif %}
 
         <!-- Botón para agregar -->
+        {% if user.is_authenticated %}
         <div class="btn-center">
             <a href="{% url 'crearPokemon' %}"
                 class="btn btn-add-pokemon">
                 Agregar Pokémon
             </a>
         </div>
+        {% endif %}
 
         <!-- Listado de Pokémon -->
         <div class="pokemon-heading">
@@ -76,7 +78,9 @@
                         <th>Tipo</th>
                         <th>Descripción</th>
                         <th>Imagen</th>
+                        {% if user.is_authenticated %}
                         <th>Acciones</th>
+                        {% endif %}
                     </tr>
                 </thead>
 
@@ -96,15 +100,17 @@
                             {% endif %}
                         </td>
 
+                        {% if user.is_authenticated %}
                         <td class="pokemon-actions">
                             <a class="pokemon-action-link" href="{% url 'editarPokemon' pokemon.id %}">Modificar</a>
                             <a class="pokemon-action-link pokemon-action-link--danger" href="{% url 'eliminarPokemon' pokemon.id %}">Eliminar</a>
                         </td>
+                        {% endif %}
                     </tr>
 
                     {% empty %}
                     <tr>
-                        <td colspan="6" class="text-center">
+                        <td colspan="{% if user.is_authenticated %}6{% else %}5{% endif %}" class="text-center">
                             No hay Pokémon registrados.
                         </td>
                     </tr>

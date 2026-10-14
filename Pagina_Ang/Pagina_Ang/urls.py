@@ -1,14 +1,15 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from Pokemon import views
-
-from django.conf import settings
-from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('registro/', views.registro, name='registro'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.cerrar_sesion, name='logout'),
     path('', views.inicio, name='inicio'),
     path('pokemon/', views.pokemon, name='pokemon'),
     path('inicioadmin/', views.inicioadmin, name='inicioadmin'),
