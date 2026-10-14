@@ -46,48 +46,40 @@
                 </form>
             </li>
         {% else %}
-            <li><button class="nav-btn" onclick="abrirModal('modalRegistro')">Registro</button></li>
-            <li><button class="nav-btn" onclick="abrirModal('modalLogin')">Login</button></li>
+            <li><button class="nav-btn" onclick="abrirForm('registro')">Registro</button></li>
+            <li><button class="nav-btn" onclick="abrirForm('login')">Login</button></li>
         {% endif %}
     </ul>
 </nav>
 
 <hr>
 
-<!-- MODALES -->
-<div id="modalRegistro" class="modal">
-    <div class="modal-contenido">
-        <span class="cerrar" onclick="cerrarModal('modalRegistro')">&times;</span>
-        <h4>Registro</h4>
-        <form method="post" action="{% url 'registro' %}" novalidate>
-            {% csrf_token %}
-            <input type="text" name="username" placeholder="Usuario" required>
-            <small class="error">{{ registro_form.username.errors.0 }}</small>
-            <input type="email" name="email" placeholder="Correo" required>
-            <small class="error">{{ registro_form.email.errors.0 }}</small>
-            <input type="password" name="password1" placeholder="Contraseña" required>
-            <small class="error">{{ registro_form.password1.errors.0 }}</small>
-            <input type="password" name="password2" placeholder="Confirmar Contraseña" required>
-            <small class="error">{{ registro_form.password2.errors.0 }}</small>
-            <button type="submit">Registrarse</button>
-        </form>
-    </div>
-</div>
+<!-- FORMULARIOS EN INICIO (ocultos por defecto, se muestran con botones) -->
+{% if not user.is_authenticated %}
+<section class="auth-section">
+    <div class="formularios-flex" style="padding:20px; gap:30px; justify-content:center;">
+        <div id="registroInline" class="formulario" style="display:none;">
+            <div style="text-align:right;"><button type="button" class="nav-btn" onclick="cerrarForm('registro')">Cerrar</button></div>
+            <h3 style="color:var(--primary); text-align:center;">Registro</h3>
+            <form method="post" action="{% url 'registro' %}">
+                {% csrf_token %}
+                {{ registro_form.as_p }}
+                <button type="submit">Registrarse</button>
+            </form>
+        </div>
 
-<div id="modalLogin" class="modal">
-    <div class="modal-contenido">
-        <span class="cerrar" onclick="cerrarModal('modalLogin')">&times;</span>
-        <h4>Login</h4>
-        <form method="post" action="{% url 'login' %}" novalidate>
-            {% csrf_token %}
-            <input type="text" name="username" placeholder="Usuario" required>
-            <small class="error">{{ login_form.username.errors.0 }}</small>
-            <input type="password" name="password" placeholder="Contraseña" required>
-            <small class="error">{{ login_form.password.errors.0 }}</small>
-            <button type="submit">Ingresar</button>
-        </form>
+        <div id="loginInline" class="formulario" style="display:none;">
+            <div style="text-align:right;"><button type="button" class="nav-btn" onclick="cerrarForm('login')">Cerrar</button></div>
+            <h3 style="color:var(--primary); text-align:center;">Login</h3>
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                {{ login_form.as_p }}
+                <button type="submit">Ingresar</button>
+            </form>
+        </div>
     </div>
-</div>
+</section>
+{% endif %}
 
 <main>
     <section id="bienvenida" class="Bienvenida">
@@ -148,6 +140,28 @@
 
 <script>
 /* Inline JS adapted from original index; keeps functionality for modals, carousel and validation. */
+</script>
+
+<script>
+function abrirForm(tipo){
+    if(tipo === 'registro'){
+        document.getElementById('registroInline').style.display = 'block';
+        document.getElementById('loginInline').style.display = 'none';
+        document.getElementById('registroInline').scrollIntoView({behavior:'smooth'});
+    } else if(tipo === 'login'){
+        document.getElementById('loginInline').style.display = 'block';
+        document.getElementById('registroInline').style.display = 'none';
+        document.getElementById('loginInline').scrollIntoView({behavior:'smooth'});
+    }
+}
+
+function cerrarForm(tipo){
+    if(tipo === 'registro'){
+        document.getElementById('registroInline').style.display = 'none';
+    } else if(tipo === 'login'){
+        document.getElementById('loginInline').style.display = 'none';
+    }
+}
 </script>
 
 <script src="{% static 'js/validaciones.js' %}"></script>

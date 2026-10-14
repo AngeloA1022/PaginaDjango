@@ -120,3 +120,7 @@ no puede registrar ningun usuarios y ademas me da error al momento de cerrar ses
 si por favor
 
 los estilo que utilice sean los que ya existen que las letras de que pedi sea letras blancas
+
+en el inicio agregale el registro y login en esta de inicio
+
+pero que aperecescan cuando presione un boton
