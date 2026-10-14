@@ -1,11 +1,10 @@
 import os
 from django.conf import settings
 from django.contrib import messages
+from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login as auth_login
-from django.contrib.auth.models import User
 from django.core.files.storage import default_storage
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
@@ -51,6 +50,8 @@ def inicio(request):
     pokemon_list = Pokemon.objects.all()
     data = {
         'pokemon': pokemon_list,
+        'login_form': AuthenticationForm(),
+        'registro_form': RegistroUsuarioForm(),
     }
     return render(request, 'Pokemon/inicio.html', data)
 
@@ -90,8 +91,6 @@ def inicioadmin(request):
     return render(request, 'Pokemon/inicioadmin.html')
 
 
-#------ Pokemones ------
-#
 @login_required(login_url='login')
 def crear_pokemon(request):
     if request.method == 'POST':
@@ -116,13 +115,13 @@ def crear_pokemon(request):
     })
 
 
-#Cargar pokemones para modificar
 @login_required(login_url='login')
-def cargar_editar_pokemon(request,pokemon_id):
+def cargar_editar_pokemon(request, pokemon_id):
     pokemon = get_object_or_404(Pokemon, id=pokemon_id)
     form = PokemonForm(instance=pokemon)
 
     return render(request, 'Pokemon/pokemonEdit.html', {'form': form, 'pokemon': pokemon})
+
 
 @login_required(login_url='login')
 def editar_pokemon(request, pokemon_id):
@@ -140,7 +139,6 @@ def editar_pokemon(request, pokemon_id):
                 )
             pokemon.save()
             return redirect('pokemones')
-    
     else:
         form = PokemonForm(instance=pokemon)
 
@@ -158,6 +156,7 @@ def eliminar_pokemon(request, pokemon_id):
 
 def pokemon(request):
     return redirect('pokemones')
+
 
 def todos_pokemon(request):
     normalizar_imagenes()

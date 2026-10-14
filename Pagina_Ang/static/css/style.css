@@ -547,6 +547,81 @@ nav.scrolled {
 }
 
 /* ==========================
+   AUTENTICACIÓN
+========================== */
+.auth-page {
+    background: rgba(0, 0, 0, 0.68);
+    color: #ffffff;
+}
+
+.auth-page .card {
+    background: rgba(13, 13, 13, 0.95);
+    border: 1px solid var(--primary);
+    box-shadow: 0 0 20px rgba(14, 189, 128, 0.6);
+    color: #ffffff;
+}
+
+.auth-page .card h2,
+.auth-page .card h4,
+.auth-page .card .form-label,
+.auth-page .card a,
+.auth-page .card .text-danger,
+.auth-page .card .small,
+.auth-page .card .alert {
+    color: #ffffff !important;
+}
+
+.auth-page .card input,
+.auth-page .card textarea,
+.auth-page .card select,
+.auth-page .card .form-control {
+    background: #000000;
+    color: #ffffff;
+    border: 1px solid var(--primary);
+    border-radius: 6px;
+}
+
+.auth-page .card input::placeholder,
+.auth-page .card textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.auth-page .card input:focus,
+.auth-page .card textarea:focus,
+.auth-page .card select:focus,
+.auth-page .card .form-control:focus {
+    background: #000000;
+    color: #ffffff;
+    border-color: var(--primary);
+    box-shadow: 0 0 8px rgba(14, 189, 128, 0.6);
+    outline: none;
+}
+
+.auth-page .card .alert-danger {
+    background: rgba(220, 53, 69, 0.12);
+    border-color: rgba(220, 53, 69, 0.7);
+    color: #ffffff;
+}
+
+.auth-page .btn-primary,
+.auth-page .btn-success {
+    background: var(--primary);
+    border: none;
+    color: #000000;
+    font-weight: bold;
+}
+
+.auth-page .btn-primary:hover,
+.auth-page .btn-success:hover {
+    background: var(--primary-dark);
+    color: #ffffff;
+}
+
+.auth-page .card a:hover {
+    color: var(--primary) !important;
+}
+
+/* ==========================
    FORMULARIOS
 ========================== */
 form {
@@ -1488,14 +1563,37 @@ body .pokemon-delete-message * {
     line-height: 1.6;
 }
 
-@media (max-width: 768px) {
-    .admin-actions {
-        flex-direction: column;
-        align-items: center;
-    }
+/* Ajuste visual para que las letras del registro/login sean blancas */
+.modal-contenido,
+.modal-contenido h4,
+.modal-contenido label,
+.modal-contenido input,
+.modal-contenido small,
+.modal-contenido button,
+.modal-contenido a,
+.modal-contenido p,
+.modal-contenido form,
+.modal-contenido .error {
+    color: #ffffff !important;
+}
 
-    .admin-actions .btn-add-pokemon {
-        width: 100%;
-        max-width: 300px;
-    }
+.modal-contenido input,
+.modal-contenido textarea,
+.modal-contenido select {
+    background: #000000 !important;
+    color: #ffffff !important;
+    border: 1px solid var(--primary) !important;
+}
+
+.modal-contenido input::placeholder,
+.modal-contenido textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.modal-contenido button {
+    color: #000000 !important;
+}
+
+.modal-contenido .error {
+    color: #ffb3b3 !important;
 }

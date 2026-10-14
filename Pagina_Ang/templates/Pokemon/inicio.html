@@ -38,31 +38,38 @@
         <li><a href="#mapas">Mapas</a></li>
         <li><a href="#objetos">Objetos</a></li>
         <li><a href="#contacto">Contacto</a></li>
-        <li><button class="nav-btn" onclick="abrirModal('modalRegistro')">Registro</button></li>
-        <li><button class="nav-btn" onclick="abrirModal('modalLogin')">Login</button></li>
+        {% if user.is_authenticated %}
+            <li>
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="nav-btn">Cerrar sesión</button>
+                </form>
+            </li>
+        {% else %}
+            <li><button class="nav-btn" onclick="abrirModal('modalRegistro')">Registro</button></li>
+            <li><button class="nav-btn" onclick="abrirModal('modalLogin')">Login</button></li>
+        {% endif %}
     </ul>
 </nav>
 
 <hr>
 
-<!-- MODALES y contenido principal (reducido para plantilla) -->
+<!-- MODALES -->
 <div id="modalRegistro" class="modal">
     <div class="modal-contenido">
         <span class="cerrar" onclick="cerrarModal('modalRegistro')">&times;</span>
         <h4>Registro</h4>
-        <form id="registroForm" novalidate>
-            <input type="text" id="usuario" placeholder="Usuario" required>
-            <small id="errorUsuario" class="error"></small>
-            <input type="email" id="emailRegistro" placeholder="Correo" required>
-            <small id="errorEmail" class="error"></small>
-            <input type="password" id="password" placeholder="Contraseña" required>
-            <button type="button" class="toggle-password" onclick="togglePassword('password', this)">Mostrar</button>
-            <small id="errorPassword" class="error"></small>
-            <input type="password" id="confirmPassword" placeholder="Confirmar Contraseña" required>
-            <button type="button" class="toggle-password" onclick="togglePassword('confirmPassword', this)">Mostrar</button>
-            <small id="errorConfirmPassword" class="error"></small>
+        <form method="post" action="{% url 'registro' %}" novalidate>
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Usuario" required>
+            <small class="error">{{ registro_form.username.errors.0 }}</small>
+            <input type="email" name="email" placeholder="Correo" required>
+            <small class="error">{{ registro_form.email.errors.0 }}</small>
+            <input type="password" name="password1" placeholder="Contraseña" required>
+            <small class="error">{{ registro_form.password1.errors.0 }}</small>
+            <input type="password" name="password2" placeholder="Confirmar Contraseña" required>
+            <small class="error">{{ registro_form.password2.errors.0 }}</small>
             <button type="submit">Registrarse</button>
-            <p id="mensajeRegistro"></p>
         </form>
     </div>
 </div>
@@ -71,14 +78,13 @@
     <div class="modal-contenido">
         <span class="cerrar" onclick="cerrarModal('modalLogin')">&times;</span>
         <h4>Login</h4>
-        <form id="loginForm" novalidate>
-            <input type="email" id="emailLogin" placeholder="Correo" required>
-            <small id="errorEmailLogin" class="error"></small>
-            <input type="password" id="passwordLogin" placeholder="Contraseña" required>
-            <button type="button" class="toggle-password" onclick="togglePassword('passwordLogin', this)">Mostrar</button>
-            <small id="errorPasswordLogin" class="error"></small>
+        <form method="post" action="{% url 'login' %}" novalidate>
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Usuario" required>
+            <small class="error">{{ login_form.username.errors.0 }}</small>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <small class="error">{{ login_form.password.errors.0 }}</small>
             <button type="submit">Ingresar</button>
-            <p id="mensajeLogin"></p>
         </form>
     </div>
 </div>
@@ -127,8 +133,6 @@
         </div>
     </section>
 
-    <!-- Secciones reducidas por claridad; el HTML original está integrado en la plantilla -->
-
 </main>
 
 <footer id="footer" class="footer">
@@ -144,7 +148,6 @@
 
 <script>
 /* Inline JS adapted from original index; keeps functionality for modals, carousel and validation. */
-// (el mismo script largo se puede mantener aquí si se desea)
 </script>
 
 <script src="{% static 'js/validaciones.js' %}"></script>

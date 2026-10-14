@@ -116,3 +116,7 @@ necesito que otro usuarios puedan hacer lo de crear,modificar y eliminar, que no
 haz los cambios en todo para sean real y funcional
 
 no puede registrar ningun usuarios y ademas me da error al momento de cerrar sesion
+
+si por favor
+
+los estilo que utilice sean los que ya existen que las letras de que pedi sea letras blancas
