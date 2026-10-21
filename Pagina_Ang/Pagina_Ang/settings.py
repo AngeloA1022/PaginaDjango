@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'Pagina_Ang.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pokemon_db_eva_2',
+        'NAME': 'pokemon_db',
         'USER': 'user_pokemon',
         'PASSWORD': 'pokemon1234',
         'HOST': 'localhost',
