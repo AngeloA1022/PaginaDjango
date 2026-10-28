@@ -122,19 +122,21 @@ nav ul li a {
 
 .nav-btn {
 	margin: 0;
-	background: black;
-	color: white;
+	background: var(--primary);
+	color: var(--primary-contrast);
 	padding: 0.65rem 1rem;
-	border: 2px solid var(--primary);
+	border: 2px solid var(--primary-dark);
 	border-radius: 999px;
 	cursor: pointer;
-	transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+	transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+	box-shadow: 0 0 10px rgba(26, 209, 143, 0.35);
 }
 
 .nav-btn:hover {
-	background: var(--primary);
-	color: black;
+	background: #1ad18f;
+	color: #06130d;
 	transform: translateY(-1px);
+	box-shadow: 0 0 12px rgba(26, 209, 143, 0.8);
 }
 
 nav ul li a:hover,

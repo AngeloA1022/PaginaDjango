@@ -41,8 +41,11 @@
                     </li>
                 
                 {% else %}
-                    <li class="nav-item">
+                    <li class="nav-btn">
                         <a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a>
+                    </li>
+                    <li class="nav-btn">
+                        <a class="nav-link" href="{% url 'registro' %}">Registrarse</a>
                     </li>
                 {% endif %}
             
@@ -57,7 +60,16 @@
         </main>
     </div>
 
-    <footer></footer>
+<footer id="footer" class="footer">
+    <div class="footer-container">
+        <h2>Contacto</h2>
+        <p><strong>Empresa:</strong> Pokémon Unite Guide</p>
+        <p><strong>Autor:</strong> Doble AA</p>
+        <p><strong>Correo:</strong> dobleaa@email.com</p>
+        <p><strong>Institución:</strong> INACAP</p>
+        <p>© 2026 Todos los derechos reservados</p>
+    </div>
+</footer>
 
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>
