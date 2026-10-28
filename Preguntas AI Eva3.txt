@@ -1,0 +1,55 @@
+28/10/2026
+
+Administrador
+User:
+Ang102209
+Contraseña:
+Ang102209
+
+ayudame para que aparezca porque esta vacio
+
+si,arreglalo
+
+si necesito me lo adaptes y lo ajuste a los otros estilos
+
+necesito que el logo quede mejor colocado ya que debe utilizar mas espacio, poco mas grande
+
+tiene que ser mas grande el logo
+
+dime donde lo esta cambiando para ajustarlo manualmente
+
+necesito que sea mas grande el logo
+
+deja el tamaño original del logo
+
+pero al tamaño original de la imagen logo.png
+
+quiero que el .logo-img sea un poco mas grande
+
+haz que el link de crear cuenta sea un boton de un color azul
+
+más redondeado
+más grande
+
+no es un boton necesito que sea un boton y de color azul
+
+<button type="button" class="btn btn-primary px-3 py-2 rounded-pill" style="font-size: 1rem; font-weight: 600; min-width: 120px;" onclick="window.location.href='{% url 'registro' %}'">Crear cuenta</button>, esto de onclick window no lo utilices utiliza href
+
+no es un boton
+
+ahora no funciona el boton de crear cuenta
+
+en este tambien necesito que sea un boton el ya tengo cuenta
+
+agruegale el fondo y quede bien
+
+ahora no se ve nada arreglalo
+
+no aparece el formulario
+
+arregla el de registro
+
+se sigue sin ver nada en registro
+
+
+
