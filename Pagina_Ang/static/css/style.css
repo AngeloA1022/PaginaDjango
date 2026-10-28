@@ -71,7 +71,7 @@ header h1 {
 	left: 20px; /* posición izquierda */
 	top: 50%; /* centrado vertical */
 	transform: translateY(-50%);
-	width: 120px; /* tamaño */
+	width: 200px; /* tamaño */
 	height: auto;
 	display: block;
 	margin: 0;
