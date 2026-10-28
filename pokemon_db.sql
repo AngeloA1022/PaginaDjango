@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-09-2026 a las 21:52:51
+-- Tiempo de generación: 28-10-2026 a las 20:18:24
 -- Versión del servidor: 11.8.9-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -220,7 +220,10 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (16, 'auth', '0010_alter_group_name_max_length', '2026-09-23 17:09:28.577436'),
 (17, 'auth', '0011_update_proxy_permissions', '2026-09-23 17:09:28.585431'),
 (18, 'auth', '0012_alter_user_first_name_max_length', '2026-09-23 17:09:28.624965'),
-(19, 'sessions', '0001_initial', '2026-09-23 17:09:28.682089');
+(19, 'sessions', '0001_initial', '2026-09-23 17:09:28.682089'),
+(20, 'Pokemon', '0002_pokemon_nombreimagen_alter_pokemon_tipo', '2026-10-28 19:18:02.173770'),
+(21, 'Pokemon', '0003_remove_pokemon_nombreimagen', '2026-10-28 19:18:02.210357'),
+(22, 'Pokemon', '0004_alter_pokemon_imagen', '2026-10-28 19:18:02.299311');
 
 -- --------------------------------------------------------
 
@@ -250,9 +253,9 @@ INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALU
 CREATE TABLE `pokemon` (
   `id` bigint(20) NOT NULL,
   `Nombre` varchar(100) NOT NULL,
-  `Tipo` varchar(100) NOT NULL,
+  `Tipo` varchar(100) DEFAULT NULL,
   `Descripcion` longtext NOT NULL,
-  `Imagen` varchar(100) NOT NULL
+  `Imagen` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
@@ -402,7 +405,7 @@ ALTER TABLE `django_content_type`
 -- AUTO_INCREMENT de la tabla `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `pokemon`
