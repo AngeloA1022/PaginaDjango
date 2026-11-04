@@ -22,6 +22,8 @@ def puede_gestionar_pokemon(user):
     return user.is_authenticated
 
 
+
+
 def normalizar_imagenes():
     for pokemon in Pokemon.objects.all():
         if not pokemon.Imagen:
