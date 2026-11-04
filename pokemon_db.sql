@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-10-2026 a las 20:18:24
+-- Tiempo de generación: 04-11-2026 a las 18:30:36
 -- Versión del servidor: 11.8.9-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -116,7 +116,7 @@ CREATE TABLE `auth_user` (
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$870000$bsffzIi3a7EM1gNgNes8fV$KeV9h+3N5rbwRoMuX70bio8ZfS7svPMHSz8CtC8nAG0=', '2026-09-23 17:21:52.427365', 1, 'Ang1022', '', '', 'ang1022@gmail.com', 1, 1, '2026-09-23 17:21:01.035787');
+(1, 'pbkdf2_sha256$390000$HUFGVzNj6cWzXUr64h84Hl$Zgukf+sAKt92KHFkZkTz5zgijAQmZ+E3xim+YwSZ1iE=', '2026-11-04 17:28:34.084118', 1, 'Ang102209', '', '', 'Ang102209@gmail.com', 1, 1, '2026-11-04 17:28:04.783933');
 
 -- --------------------------------------------------------
 
@@ -202,28 +202,28 @@ CREATE TABLE `django_migrations` (
 --
 
 INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
-(1, 'Pokemon', '0001_initial', '2026-09-23 17:09:27.113657'),
-(2, 'contenttypes', '0001_initial', '2026-09-23 17:09:27.224982'),
-(3, 'auth', '0001_initial', '2026-09-23 17:09:28.053678'),
-(4, 'admin', '0001_initial', '2026-09-23 17:09:28.185796'),
-(5, 'admin', '0002_logentry_remove_auto_add', '2026-09-23 17:09:28.207340'),
-(6, 'admin', '0003_logentry_add_action_flag_choices', '2026-09-23 17:09:28.213342'),
-(7, 'contenttypes', '0002_remove_content_type_name', '2026-09-23 17:09:28.303472'),
-(8, 'auth', '0002_alter_permission_name_max_length', '2026-09-23 17:09:28.361035'),
-(9, 'auth', '0003_alter_user_email_max_length', '2026-09-23 17:09:28.400578'),
-(10, 'auth', '0004_alter_user_username_opts', '2026-09-23 17:09:28.407595'),
-(11, 'auth', '0005_alter_user_last_login_null', '2026-09-23 17:09:28.462405'),
-(12, 'auth', '0006_require_contenttypes_0002', '2026-09-23 17:09:28.464404'),
-(13, 'auth', '0007_alter_validators_add_error_messages', '2026-09-23 17:09:28.469404'),
-(14, 'auth', '0008_alter_user_username_max_length', '2026-09-23 17:09:28.501916'),
-(15, 'auth', '0009_alter_user_last_name_max_length', '2026-09-23 17:09:28.539918'),
-(16, 'auth', '0010_alter_group_name_max_length', '2026-09-23 17:09:28.577436'),
-(17, 'auth', '0011_update_proxy_permissions', '2026-09-23 17:09:28.585431'),
-(18, 'auth', '0012_alter_user_first_name_max_length', '2026-09-23 17:09:28.624965'),
-(19, 'sessions', '0001_initial', '2026-09-23 17:09:28.682089'),
-(20, 'Pokemon', '0002_pokemon_nombreimagen_alter_pokemon_tipo', '2026-10-28 19:18:02.173770'),
-(21, 'Pokemon', '0003_remove_pokemon_nombreimagen', '2026-10-28 19:18:02.210357'),
-(22, 'Pokemon', '0004_alter_pokemon_imagen', '2026-10-28 19:18:02.299311');
+(1, 'Pokemon', '0001_initial', '2026-11-04 17:26:53.686601'),
+(2, 'Pokemon', '0002_pokemon_nombreimagen_alter_pokemon_tipo', '2026-11-04 17:26:53.784465'),
+(3, 'Pokemon', '0003_remove_pokemon_nombreimagen', '2026-11-04 17:26:53.827289'),
+(4, 'Pokemon', '0004_alter_pokemon_imagen', '2026-11-04 17:26:53.927835'),
+(5, 'contenttypes', '0001_initial', '2026-11-04 17:26:54.000181'),
+(6, 'auth', '0001_initial', '2026-11-04 17:26:54.795327'),
+(7, 'admin', '0001_initial', '2026-11-04 17:26:54.983814'),
+(8, 'admin', '0002_logentry_remove_auto_add', '2026-11-04 17:26:54.995811'),
+(9, 'admin', '0003_logentry_add_action_flag_choices', '2026-11-04 17:26:55.008816'),
+(10, 'contenttypes', '0002_remove_content_type_name', '2026-11-04 17:26:55.124341'),
+(11, 'auth', '0002_alter_permission_name_max_length', '2026-11-04 17:26:55.193880'),
+(12, 'auth', '0003_alter_user_email_max_length', '2026-11-04 17:26:55.255887'),
+(13, 'auth', '0004_alter_user_username_opts', '2026-11-04 17:26:55.268437'),
+(14, 'auth', '0005_alter_user_last_login_null', '2026-11-04 17:26:55.345155'),
+(15, 'auth', '0006_require_contenttypes_0002', '2026-11-04 17:26:55.353156'),
+(16, 'auth', '0007_alter_validators_add_error_messages', '2026-11-04 17:26:55.367156'),
+(17, 'auth', '0008_alter_user_username_max_length', '2026-11-04 17:26:55.414797'),
+(18, 'auth', '0009_alter_user_last_name_max_length', '2026-11-04 17:26:55.460112'),
+(19, 'auth', '0010_alter_group_name_max_length', '2026-11-04 17:26:55.504685'),
+(20, 'auth', '0011_update_proxy_permissions', '2026-11-04 17:26:55.516781'),
+(21, 'auth', '0012_alter_user_first_name_max_length', '2026-11-04 17:26:55.562176'),
+(22, 'sessions', '0001_initial', '2026-11-04 17:26:55.637808');
 
 -- --------------------------------------------------------
 
@@ -242,7 +242,7 @@ CREATE TABLE `django_session` (
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
-('5m6zn49hw2ksjazbmw2xza40ckxdjmpb', '.eJxVjDsOwjAQBe_iGllZxG5iSnrOEK33QwLIlvKpEHeHSCmgfTPzXqHndRn6dbapHzWcA4TD75ZZHlY2oHcutxqllmUac9yUuNM5Xqva87K7fwcDz8O3dhRBcvDkrEok5kySKUunSbwD9QRIdjKxNjXACq1jc0RG7JxSeH8AMgk5Qw:1x9QfI:z5Mj0NHM6BAE489leFOvaZHTkNA67RyLUC-IuFkvcnc', '2026-10-07 17:21:52.431377');
+('5dc8937req3s32pixeltaw63nt472tt6', '.eJxVjMEOgjAQRP-lZ9O0bFeKR-9-A9ndLhY1JaFwMv67kHDQ22Tem3mbntYl92vVuR-TuRhvTr8dkzy17CA9qNwnK1NZ5pHtrtiDVnubkr6uh_t3kKnmbd0NooCoJL4VNwThzsXkAD02KKx49hQDtxpBiBF4yyBOqQnSNtCZzxf2zjgh:1xOemo:xyaR9ZsrSyLy2WNxPo4I2q4VoOjIVC6l8m7lar2welU', '2026-11-18 17:28:34.087113');
 
 -- --------------------------------------------------------
 
@@ -263,8 +263,8 @@ CREATE TABLE `pokemon` (
 --
 
 INSERT INTO `pokemon` (`id`, `Nombre`, `Tipo`, `Descripcion`, `Imagen`) VALUES
-(1, 'Pikachu', 'Electrico', 'Es un buen pokemon', 'pikachu.png'),
-(2, 'charizard', 'fuego', 'es el primer inicial de tipo fuego y es el mejor', 'charizard.png');
+(1, 'Pikachu', 'Electrico', 'Un pokemon eléctrico muy popular', 'images/pikachu_pNeQXn7.png'),
+(2, 'Charizard', 'Fuego Volador', 'Pokemon de fuego muy popular y poderoso', 'images/charizard_lsfYDjs.png');
 
 --
 -- Índices para tablas volcadas
@@ -411,7 +411,7 @@ ALTER TABLE `django_migrations`
 -- AUTO_INCREMENT de la tabla `pokemon`
 --
 ALTER TABLE `pokemon`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
