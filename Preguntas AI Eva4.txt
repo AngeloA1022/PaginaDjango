@@ -6,3 +6,32 @@ que aparezca el icono de una camara
 ahora necesito que si tengo problemas con la base de datos no se caigan las paginas, necesito que sea un json
 
 aplicalo en todas las pagina que sigan manteniendo, aunque no se conecte a la base de datos
+
+si porfavor
+
+necesito que aperezca en todas las paginas cuando no funcione la base de datos
+
+es cuando aparezca este error necesito que salga un mensaje OperationalError at /accounts/login/
+(1045, "Access denied for user 'user_pokemon'@'localhost' (using password: YES)")
+Request Method: POST
+Request URL: http://127.0.0.1:8000/accounts/login/
+Django Version: 4.1
+Exception Type: OperationalError
+Exception Value:
+(1045, "Access denied for user 'user_pokemon'@'localhost' (using password: YES)")
+Exception Location: C:\Users\alumnoslgr\AppData\Local\Programs\Python\Python312\Lib\site-packages\MySQLdb\connections.py, line 216, in init
+Raised during: django.contrib.auth.views.LoginView
+Python Executable: C:\Users\alumnoslgr\AppData\Local\Programs\Python\Python312\python.exe
+Python Version: 3.12.8
+Python Path:
+['C:\Users\alumnoslgr\Downloads\PaginaDjango\Pagina_Ang',
+'C:\Users\alumnoslgr\AppData\Local\Programs\Python\Python312\python312.zip',
+'C:\Users\alumnoslgr\AppData\Local\Programs\Python\Python312\DLLs',
+'C:\Users\alumnoslgr\AppData\Local\Programs\Python\Python312\Lib',
+'C:\Users\alumnoslgr\AppData\Local\Programs\Python\Python312',
+'C:\Users\alumnoslgr\AppData\Local\Programs\Python\Python312\Lib\site-packages']
+
+ahora no se me funcionan los estilos de la pagina
+
+no funcion
+
