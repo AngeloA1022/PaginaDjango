@@ -1,5 +1,6 @@
-from django.db import DatabaseError, OperationalError
-from django.http import JsonResponse
+from django.db import DatabaseError, InterfaceError, OperationalError
+from django.http import HttpResponse
+from django.shortcuts import render
 
 
 class DatabaseErrorJsonMiddleware:
@@ -9,12 +10,5 @@ class DatabaseErrorJsonMiddleware:
     def __call__(self, request):
         try:
             return self.get_response(request)
-        except (DatabaseError, OperationalError) as exc:
-            return JsonResponse(
-                {
-                    'error': 'No se pudo acceder a la base de datos',
-                    'detalle': str(exc),
-                    'status': 503,
-                },
-                status=503,
-            )
+        except (DatabaseError, OperationalError, InterfaceError):
+            return render(request, 'error_db.html', status=503)
