@@ -1,0 +1,7 @@
+
+
+
+
+necesito que cuando no se carguen las imagenes que aparecezca un cuadrado por defecto
+
+que aparezca el icono de una camara
