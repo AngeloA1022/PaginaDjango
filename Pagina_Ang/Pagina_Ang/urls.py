@@ -19,6 +19,9 @@ urlpatterns = [
     path('pokemonEditado/<int:pokemon_id>/', views.editar_pokemon, name='pokemonEditado'),
     path('pokemonDel/<int:pokemon_id>/', views.eliminar_pokemon, name='eliminarPokemon'),
     path('accounts/' , include('django.contrib.auth.urls')),
+
+    # Rutas de la API
+    path('pokemonesApi/', views.pokemonesApi, name='pokemonesApi'),
 ]
 
 if settings.DEBUG:
