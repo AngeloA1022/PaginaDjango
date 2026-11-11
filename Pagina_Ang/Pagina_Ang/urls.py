@@ -27,6 +27,8 @@ urlpatterns = [
 
     # Rutas de la API
     path('pokemonesApi/', vistasApi.pokemonesApi, name='pokemonesApi'),
+    path('pokemonesListApi/', vistasApi.pokemon_listado, name='pokemonesListoApi'),
+    path('pokemonesListApi/<int:pk>/', vistasApi.pokemon_detalle, name='pokemonDetalleApi'),
 ]
 
 if settings.DEBUG:
