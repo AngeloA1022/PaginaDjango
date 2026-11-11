@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.conf.urls.static import static
+from pokemonApi import views as vistasApi
 from django.contrib import admin
 from django.urls import include, path
 from Pokemon import views
@@ -21,7 +22,7 @@ urlpatterns = [
     path('accounts/' , include('django.contrib.auth.urls')),
 
     # Rutas de la API
-    path('pokemonesApi/', views.pokemonesApi, name='pokemonesApi'),
+    path('pokemonesApi/', vistasApi.pokemonesApi, name='pokemonesApi'),
 ]
 
 if settings.DEBUG:
