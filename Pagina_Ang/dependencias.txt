@@ -3,3 +3,4 @@ mysqlclient
 pillow
 django-crispy-forms
 crispy-bootstrap5
+pip install djangorestframework
