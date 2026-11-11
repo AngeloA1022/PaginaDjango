@@ -1,9 +1,13 @@
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.defaults import page_not_found
 from pokemonApi import views as vistasApi
 from django.contrib import admin
 from django.urls import include, path
 from Pokemon import views
+
+handler500 = 'Pagina_Ang.views.error_db_view'
+handler404 = 'Pagina_Ang.views.error_404_view'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
