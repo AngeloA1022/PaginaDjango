@@ -35,3 +35,5 @@ ahora no se me funcionan los estilos de la pagina
 
 no funcion
 
+porque cuando intento cambiar una imagen que se pudo insertar no me deja modificar
+
