@@ -13,8 +13,9 @@ class PokemonForm(forms.ModelForm):
     required=False)
     Descripcion = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control','placeholder': 'Ej: Un Pokémon de tipo eléctrico muy popular.'}))
     Imagen = forms.ImageField(
-        widget=forms.ClearableFileInput(attrs={'class': 'form-control-file', 'placeholder': 'Selecciona una imagen'}),
+        widget=forms.ClearableFileInput(attrs={'class': 'form-control-file'}),
         required=False,
+        help_text='Seleccione una imagen',
     )
 
 

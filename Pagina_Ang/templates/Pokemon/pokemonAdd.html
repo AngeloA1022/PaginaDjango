@@ -30,6 +30,9 @@
                 <div class="mb-3">
                     {{ form.Imagen.label_tag }}
                     {{ form.Imagen }}
+                    {% if form.Imagen.help_text %}
+                        <div class="form-text">{{ form.Imagen.help_text }}</div>
+                    {% endif %}
                     <div class="text-danger">{{ form.Imagen.errors }}</div>
                 </div>
 
