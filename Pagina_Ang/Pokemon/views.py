@@ -130,15 +130,18 @@ def editar_pokemon(request, pokemon_id):
     pokemon = get_object_or_404(Pokemon, id=pokemon_id)
 
     if request.method == 'POST':
+        imagen_actual = pokemon.Imagen
         form = PokemonForm(request.POST, request.FILES, instance=pokemon)
         if form.is_valid():
-            form.save(commit=False)
+            pokemon = form.save(commit=False)
             archivo = request.FILES.get('Imagen')
             if archivo:
                 pokemon.Imagen = default_storage.save(
                     f'images/{archivo.name}',
                     archivo,
                 )
+            else:
+                pokemon.Imagen = imagen_actual
             pokemon.save()
             return redirect('pokemones')
     else:
