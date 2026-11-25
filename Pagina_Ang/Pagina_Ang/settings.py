@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+import socket
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -101,6 +102,28 @@ DATABASES = {
         },
     },
 }
+
+
+SQUILE_CONFIG = {
+    'ENGINE': 'django.db.backends.SQLite3',
+    'NAME': BASE_DIR / 'db_falback.sqlite3',
+}
+
+def is_mysql_available(ho):
+    try:
+        with socket.create_connection((ho, 3306), timeout=1):
+            return True
+    except OSError:
+        return False
+
+USE_MYSQL = is_mysql_available('localhost')
+
+DATABASES = {
+    'default': DATABASES['default'] if USE_MYSQL else SQUILE_CONFIG,
+    'sqlite_backup': SQUILE_CONFIG,
+}
+
+JSON_FALLBACK_FILE = BASE_DIR / 'Offline_backup.json'
 
 
 # Password validation
