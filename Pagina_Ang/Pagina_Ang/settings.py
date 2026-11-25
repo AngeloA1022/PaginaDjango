@@ -89,38 +89,37 @@ WSGI_APPLICATION = 'Pagina_Ang.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pokemon_db',
-        'USER': 'user_pokemon',
-        'PASSWORD': 'pokemon1234',
-        'HOST': 'localhost',
-        'PORT': '3306',
-        'OPTIONS': {
-            'init_command': 'SET sql_mode="STRICT_ALL_TABLES"',
-        },
+MYSQL_CONFIG = {
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': 'pokemon_db',
+    'USER': 'user_pokemon',
+    'PASSWORD': 'pokemon1234',
+    'HOST': 'localhost',
+    'PORT': '3306',
+    'OPTIONS': {
+        'init_command': 'SET sql_mode="STRICT_ALL_TABLES"',
     },
 }
 
-
-SQUILE_CONFIG = {
-    'ENGINE': 'django.db.backends.SQLite3',
+SQLITE_CONFIG = {
+    'ENGINE': 'django.db.backends.sqlite3',
     'NAME': BASE_DIR / 'db_falback.sqlite3',
 }
 
-def is_mysql_available(ho):
+
+def is_mysql_available(host):
     try:
-        with socket.create_connection((ho, 3306), timeout=1):
+        with socket.create_connection((host, 3306), timeout=1):
             return True
     except OSError:
         return False
 
+
 USE_MYSQL = is_mysql_available('localhost')
 
 DATABASES = {
-    'default': DATABASES['default'] if USE_MYSQL else SQUILE_CONFIG,
-    'sqlite_backup': SQUILE_CONFIG,
+    'default': MYSQL_CONFIG if USE_MYSQL else SQLITE_CONFIG,
+    'sqlite_backup': SQLITE_CONFIG,
 }
 
 JSON_FALLBACK_FILE = BASE_DIR / 'datos_offline.json'

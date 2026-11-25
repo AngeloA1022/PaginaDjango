@@ -37,3 +37,10 @@ no funcion
 
 porque cuando intento cambiar una imagen que se pudo insertar no me deja modificar
 
+necesito que se guarde la informacion aunque la la base de datos o la conexion no funcione
+
+ahora necesito que en caso de tener problema con la base de datos, la informacion se guarde en un archivo que se llame datos_offline, que no sean tan complejo y solo hazlo no agregues cosas innecesarias
+
+necesito que los datos que se guarden sean en formato json
+
+pero necesito que se cree el archvo json si no tengo conexion a esas base de datos, adptalo a todo lo que esta
