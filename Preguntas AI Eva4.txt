@@ -44,3 +44,10 @@ ahora necesito que en caso de tener problema con la base de datos, la informacio
 necesito que los datos que se guarden sean en formato json
 
 pero necesito que se cree el archvo json si no tengo conexion a esas base de datos, adptalo a todo lo que esta
+
+
+lo unico que pasa cuando no esta disponible la base de datos sale la pantalla de Base de datos no disponible pero lo primero que debe sucede es que guarde la informacion y luego aparezca esa pagina, tambien necesito que cuando recupere la conexion a la base de datos, tenga un boton para guardar la informacion que esta en el archivo de datos offline, esto solo que el administrador pueda guardar la informacion
+
+
+Me dice esto pero si ahi en datos_offline
+No hay registros offline o la base de datos sigue sin estar disponible.
