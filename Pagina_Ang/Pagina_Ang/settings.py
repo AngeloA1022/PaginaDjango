@@ -123,7 +123,7 @@ DATABASES = {
     'sqlite_backup': SQUILE_CONFIG,
 }
 
-JSON_FALLBACK_FILE = BASE_DIR / 'Offline_backup.json'
+JSON_FALLBACK_FILE = BASE_DIR / 'datos_offline.json'
 
 
 # Password validation

@@ -10,6 +10,8 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
 from Pokemon.forms import PokemonForm, RegistroUsuarioForm
 from Pokemon.models import Pokemon
+from django.db import DatabaseError, OperationalError
+from Pagina_Ang.datos_offline import guardar_datos_offline
 
 # Create your views here.
 
@@ -106,8 +108,18 @@ def crear_pokemon(request):
                     archivo,
                 )
 
-            pokemon.save()
-            return redirect('pokemones')
+            try:
+                pokemon.save()
+                return redirect('pokemones')
+            except (DatabaseError, OperationalError):
+                guardar_datos_offline("crear", {
+                    "Nombre": pokemon.Nombre,
+                    "Tipo": pokemon.Tipo,
+                    "Descripcion": pokemon.Descripcion,
+                    "Imagen": pokemon.Imagen,
+                })
+                messages.success(request, 'Información guardada en datos_offline.')
+                return redirect('pokemones')
     else:
         form = PokemonForm()
     return render(request, 'Pokemon/pokemonAdd.html', {
@@ -142,8 +154,18 @@ def editar_pokemon(request, pokemon_id):
                 )
             else:
                 pokemon.Imagen = imagen_actual
-            pokemon.save()
-            return redirect('pokemones')
+            try:
+                pokemon.save()
+                return redirect('pokemones')
+            except (DatabaseError, OperationalError):
+                guardar_datos_offline("editar", {
+                    "Nombre": pokemon.Nombre,
+                    "Tipo": pokemon.Tipo,
+                    "Descripcion": pokemon.Descripcion,
+                    "Imagen": pokemon.Imagen,
+                }, pokemon_id)
+                messages.success(request, 'Información guardada en datos_offline.')
+                return redirect('pokemones')
     else:
         form = PokemonForm(instance=pokemon)
 
@@ -154,8 +176,18 @@ def editar_pokemon(request, pokemon_id):
 def eliminar_pokemon(request, pokemon_id):
     pokemon = get_object_or_404(Pokemon, id=pokemon_id)
     if request.method == 'POST':
-        pokemon.delete()
-        return redirect('pokemones')
+        try:
+            pokemon.delete()
+            return redirect('pokemones')
+        except (DatabaseError, OperationalError):
+            guardar_datos_offline("eliminar", {
+                "Nombre": pokemon.Nombre,
+                "Tipo": pokemon.Tipo,
+                "Descripcion": pokemon.Descripcion,
+                "Imagen": pokemon.Imagen,
+            }, pokemon_id)
+            messages.success(request, 'Información guardada en datos_offline.')
+            return redirect('pokemones')
     return render(request, 'Pokemon/pokemonDel.html', {'pokemon': pokemon})
 
 
