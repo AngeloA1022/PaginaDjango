@@ -12,6 +12,11 @@ if not ARCHIVO_DATOS_OFFLINE.exists():
 
 
 def guardar_datos_offline(operacion, datos=None, pokemon_id=None):
+    datos = datos or {}
+
+    if operacion == "error_base_de_datos" and not datos:
+        return
+
     registros = []
 
     if ARCHIVO_DATOS_OFFLINE.exists():
@@ -62,6 +67,15 @@ def sincronizar_datos_offline():
         operacion = registro.get("operacion")
         datos = registro.get("datos") or {}
         pokemon_id = registro.get("pokemon_id")
+
+        datos_utiles = {
+            clave: valor
+            for clave, valor in datos.items()
+            if clave not in ("csrfmiddlewaretoken", "password", "password1", "password2")
+        }
+
+        if operacion == "error_base_de_datos" and not datos_utiles:
+            continue
 
         try:
             if operacion in ("crear", "editar", "eliminar"):

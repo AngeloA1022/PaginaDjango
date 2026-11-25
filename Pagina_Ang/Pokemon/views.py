@@ -211,7 +211,7 @@ def sincronizar_datos(request):
                     with open(settings.JSON_FALLBACK_FILE, 'r', encoding='utf-8') as archivo:
                         pendientes = json.load(archivo)
                     if pendientes:
-                        messages.warning(request, 'Hay registros offline pendientes y la conexión a MySQL sigue sin estar disponible.')
+                        messages.warning(request, 'Hay registros offline pendientes.')
                     else:
                         messages.info(request, 'No hay registros offline pendientes.')
                 except (json.JSONDecodeError, OSError):
