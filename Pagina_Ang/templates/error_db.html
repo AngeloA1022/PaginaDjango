@@ -54,6 +54,9 @@
         <div class="icon">⚠️</div>
         <h1>Servicio temporalmente no disponible</h1>
         <p>No se pudo conectar con la base de datos.</p>
+        {% if datos_guardados %}
+            <p><strong>La información fue guardada en datos_offline.json.</strong></p>
+        {% endif %}
         <p>Intenta nuevamente en unos minutos.</p>
         <a class="btn" href="/">Volver al inicio</a>
     </div>

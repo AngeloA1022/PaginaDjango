@@ -29,6 +29,7 @@ urlpatterns = [
     path('pokemonesApi/', vistasApi.pokemonesApi, name='pokemonesApi'),
     path('pokemonesListApi/', vistasApi.pokemon_listado, name='pokemonesListoApi'),
     path('pokemonesListApi/<int:pk>/', vistasApi.pokemon_detalle, name='pokemonDetalleApi'),
+    path('sincronizar-datos/', views.sincronizar_datos, name='sincronizarDatos'),
 ]
 
 if settings.DEBUG:

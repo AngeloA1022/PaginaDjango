@@ -14,6 +14,8 @@ class DatabaseErrorMiddleware:
     def process_exception(self, request, exception):
         if isinstance(exception, (DatabaseError, OperationalError, InterfaceError)):
             datos = request.POST.dict() if request.method == 'POST' else {}
+            for campo in ('password', 'password1', 'password2', 'csrfmiddlewaretoken'):
+                datos.pop(campo, None)
             guardar_datos_offline('error_base_de_datos', datos)
-            return render(request, 'error_db.html', status=503)
+            return render(request, 'error_db.html', {'datos_guardados': True}, status=503)
         return None

@@ -119,6 +119,7 @@ USE_MYSQL = is_mysql_available('localhost')
 
 DATABASES = {
     'default': MYSQL_CONFIG if USE_MYSQL else SQLITE_CONFIG,
+    'mysql_primary': MYSQL_CONFIG,
     'sqlite_backup': SQLITE_CONFIG,
 }
 

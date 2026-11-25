@@ -1,4 +1,5 @@
 import os
+import json
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import login as auth_login
@@ -11,7 +12,7 @@ from django.views.decorators.http import require_POST
 from Pokemon.forms import PokemonForm, RegistroUsuarioForm
 from Pokemon.models import Pokemon
 from django.db import DatabaseError, OperationalError
-from Pagina_Ang.datos_offline import guardar_datos_offline
+from Pagina_Ang.datos_offline import guardar_datos_offline, sincronizar_datos_offline
 
 # Create your views here.
 
@@ -193,6 +194,32 @@ def eliminar_pokemon(request, pokemon_id):
 
 def pokemon(request):
     return redirect('pokemones')
+
+
+@login_required(login_url='login')
+def sincronizar_datos(request):
+    if not request.user.is_staff:
+        return redirect('inicioadmin')
+
+    if request.method == 'POST':
+        try:
+            cantidad = sincronizar_datos_offline()
+            if cantidad:
+                messages.success(request, f'Se guardaron {cantidad} registros offline.')
+            else:
+                try:
+                    with open(settings.JSON_FALLBACK_FILE, 'r', encoding='utf-8') as archivo:
+                        pendientes = json.load(archivo)
+                    if pendientes:
+                        messages.warning(request, 'Hay registros offline pendientes y la conexión a MySQL sigue sin estar disponible.')
+                    else:
+                        messages.info(request, 'No hay registros offline pendientes.')
+                except (json.JSONDecodeError, OSError):
+                    messages.warning(request, 'No se pudo leer datos_offline.json.')
+        except (DatabaseError, OperationalError):
+            messages.error(request, 'No se pudo conectar a la base de datos.')
+
+    return redirect('inicioadmin')
 
 
 def todos_pokemon(request):
