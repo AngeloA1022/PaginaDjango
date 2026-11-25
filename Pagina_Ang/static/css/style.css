@@ -1533,7 +1533,7 @@ body .pokemon-delete-message * {
 }
 
 .admin-heading h1 {
-    color: #000000 !important;
+    color: #ffffff !important;
 }
 
 .admin-actions {
@@ -1603,10 +1603,22 @@ body .pokemon-delete-message * {
     font-size: 1.5rem;
 }
 
-.admin-card p {
-    margin: 0;
-    color: #dfeaf3;
-    line-height: 1.6;
+.admin-card-button {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 10px 18px;
+    border: 2px solid var(--primary-dark);
+    border-radius: 10px;
+    background: var(--primary);
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.admin-card-button:hover,
+.admin-card-button:focus {
+    background: #54e5ac;
+    color: #000000;
 }
 
 /* Ajuste visual para que las letras del registro/login sean blancas */
@@ -1646,7 +1658,7 @@ body .pokemon-delete-message * {
 
 /* ===== Estilo verde definitivo del panel administrativo ===== */
 .admin-heading h1 {
-    color: #000000 !important;
+    color: #ffffff !important;
 }
 
 .admin-section {

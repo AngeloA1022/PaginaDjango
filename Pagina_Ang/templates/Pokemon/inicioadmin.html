@@ -31,20 +31,23 @@
         <div class="admin-cards row g-4 mt-3">
             <div class="col-md-4">
                 <div class="admin-card">
-                    <h3>Gestión</h3>
+                    <h3>Agregar</h3>
                     <p>Agrega nuevos Pokémon al catálogo de la aplicación.</p>
+                    <a class="admin-card-button" href="{% url 'crearPokemon' %}">Agregar Pokémon</a>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="admin-card">
-                    <h3>Edición</h3>
+                    <h3>Editar</h3>
                     <p>Modifica el nombre, tipo, descripción e imagen de cada Pokémon.</p>
+                    <a class="admin-card-button" href="{% url 'pokemones' %}">Editar Pokémon</a>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="admin-card">
-                    <h3>Eliminación</h3>
+                    <h3>Eliminar</h3>
                     <p>Elimina registros que ya no formen parte del catálogo.</p>
+                    <a class="admin-card-button" href="{% url 'pokemones' %}">Eliminar Pokémon</a>
                 </div>
             </div>
         </div>
